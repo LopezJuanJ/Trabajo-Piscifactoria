@@ -3,7 +3,11 @@ public class Simulador {
   public int numeroPiscifactorias;
   public String nombreEmpresa;
 
-  private void menu(){
+    public void init(){
+
+    }
+
+  public void menu(){
     System.out.println("1. Estado general");
     System.out.println("2. Estado piscifactoria");
     System.out.println("3. Estado tanques");
@@ -19,4 +23,36 @@ public class Simulador {
     System.out.println("13. Pasar varios dias");
     System.out.println("14. Salir");
   }
+
+  public void menuPisc(){
+
+  }
+
+  public void selectPisc(){
+
+  }
+
+  public void selectTank(){
+
+  }
+
+  public void showGeneralStatus(){
+ 
+  }
+
+  public void showSpecificStatus(){
+
+  }
+
+  public void showTankStatus(){
+
+  }
+
+  public void showStats(){
+
+  }
+  public void showIctio(){
+    
+  }
+
 }
