@@ -54,5 +54,28 @@ public class Simulador {
   public void showIctio(){
     
   }
-
+  public void nextDay(){
+    
+  }
+  public void addFood(){
+    
+  }
+  public void addFish(){
+    
+  }
+  public void sell(){
+    
+  }
+  public void cleanTank(){
+    
+  }
+  public void emptyTank(){
+    
+  }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+  public void upgrade(){
+    
+  }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 }
