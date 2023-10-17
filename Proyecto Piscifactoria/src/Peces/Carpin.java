@@ -1,6 +1,5 @@
 package Peces;
 
-import java.util.function.Supplier;
 
 import propiedades.PecesDatos;
 
