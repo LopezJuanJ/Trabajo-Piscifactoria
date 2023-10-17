@@ -15,7 +15,7 @@ public abstract class Piscifactoria {
     
     }
     public void nextDay(){
-    
+
     }
     public void sellFish(){
     

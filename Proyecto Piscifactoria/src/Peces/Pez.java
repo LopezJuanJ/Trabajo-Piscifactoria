@@ -1,56 +1,60 @@
+package Peces;
+import propiedades.AlmacenPropiedades;
+import propiedades.PecesDatos;
+
 public abstract class Pez {
-    private final String pez;
-    private final String nombreCientifico;
-    private int edad;
-    private final String sexo;
+
+    private int edad = 0;
+    private boolean sexo;
     private boolean fertilidad;
     private boolean vida;
     private boolean alimentado;
+    protected PecesDatos datos;
     
 
   
-    public Pez(String pez, String nombreCientifico, int edad, String sexo, boolean fertilidad, boolean vida,boolean alimentado) {
-        this.pez = pez;
-        this.nombreCientifico = nombreCientifico;
-        this.edad = edad;
-        this.sexo = sexo;
-        this.fertilidad = fertilidad;
-        this.vida = vida;
-        this.alimentado = alimentado;
+    public Pez (boolean sexo, PecesDatos datos) {
+        this.edad = 0;
+        this.sexo = true;
+        this.datos = datos;
+        
     }
     public void showStatus() {
-        System.out.println("---------------"+ pez +"---------------");
+        System.out.println("---------------" + this.datos.getNombre() + "---------------");
         System.out.println("Edad " + edad + "dias");
         System.out.println("Sexo: " + sexo);
-        verificarAlimentacion(alimentado);
-        verificarVida(vida);
-        System.out.println("Adulto: ");
-        mostrarFertilidad(fertilidad);
-    }
 
-    private void verificarAlimentacion(boolean alimentado) {
+
         if(alimentado = true){
             System.out.println("Alimentado: Si");
         } else {
             System.out.println("Alimentado: No");
         }
-    }
+         
 
-    private void verificarVida(boolean vida) {
+
         if(vida = true){
             System.out.println("Vivo: Si");
         } else {
             System.out.println("Vivo: No");
         }
-    }
 
-    public void mostrarFertilidad(boolean fertilidad) {
+
+
         if (fertilidad = true) {
             System.out.println("Fertilidad: Si");
         } else {
             System.out.println("Fertilidad: No");
+        };
+
+        if (edad > 5){
+            System.out.println("Adulto: Si");
+        }else{
+            System.out.println("Adulto: No");
         }
     }
+
+    
 
 
     public void grow() {
