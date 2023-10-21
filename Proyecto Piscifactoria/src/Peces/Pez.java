@@ -1,10 +1,13 @@
 package Peces;
+import java.util.Random;
+
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
+
 public abstract class Pez {
 
-    private int edad = 0;
+    protected int edad = 0;
     private boolean sexo;
     private boolean fertilidad;
     private boolean vida;
@@ -23,23 +26,11 @@ public abstract class Pez {
         System.out.println("---------------" + this.datos.getNombre() + "---------------");
         System.out.println("Edad " + edad + "dias");
         System.out.println("Sexo: " + sexo);
-
-
         if(alimentado = true){
             System.out.println("Alimentado: Si");
         } else {
             System.out.println("Alimentado: No");
         }
-         
-
-
-        if(vida = true){
-            System.out.println("Vivo: Si");
-        } else {
-            System.out.println("Vivo: No");
-        }
-
-
 
         if (fertilidad = true) {
             System.out.println("Fertilidad: Si");
@@ -47,10 +38,46 @@ public abstract class Pez {
             System.out.println("Fertilidad: No");
         };
 
+        if(vida = true){
+            System.out.println("Vivo: Si");
+        } else {
+            System.out.println("Vivo: No");
+        }
+
         if (edad > 5){
             System.out.println("Adulto: Si");
         }else{
             System.out.println("Adulto: No");
+        }
+    }
+
+    /**
+     * Método que comprobar si un pez esta alimentado 
+     * @param comida Cantidad de comida restante en el almacén 
+     */
+    public void comprobarComida(int comida){
+        if (vida==true){
+            if (comida == 0){
+            alimentado=false;
+        }else{
+            alimentado=true;
+        }
+        }
+        
+    }
+
+
+    /**
+     * Método para saber la posibilidad de vida de un pez
+     */
+    public void comprobarVida(){
+        Random random = new Random();
+        if (alimentado = false){
+            if (random.nextBoolean()){
+                this.edad++;
+            } else {
+                this.vida=false;
+            }
         }
     }
 

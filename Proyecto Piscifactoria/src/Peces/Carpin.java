@@ -10,7 +10,7 @@ public class Carpin extends Pez {
     private boolean fertilidad;
     private boolean vida;
     private boolean alimentado;
-    
+    private PecesDatos datos = AlmacenPropiedades.CARPIN_TRES_ESPINAS;
     public Carpin(boolean sexo, PecesDatos datos) {
         super(sexo, datos);
         
