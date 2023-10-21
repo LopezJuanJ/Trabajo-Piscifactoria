@@ -1,7 +1,8 @@
 package Peces;
 
 
-import Propiedades.PecesDatos;
+import propiedades.PecesDatos;
+import propiedades.AlmacenPropiedades;
 
 public class Carpin extends Pez {
     private int edad = 0;
@@ -9,10 +10,9 @@ public class Carpin extends Pez {
     private boolean fertilidad;
     private boolean vida;
     private boolean alimentado;
-    protected PecesDatos datos;
     
     public Carpin(boolean sexo, PecesDatos datos) {
         super(sexo, datos);
-
+        
     }   
 }
