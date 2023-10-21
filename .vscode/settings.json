@@ -1,6 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\mperez\\Downloads\\Orca_lib.jar"
-    ]
-}

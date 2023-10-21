@@ -1,7 +1,7 @@
 package Peces;
 
 
-import propiedades.PecesDatos;
+import Propiedades.PecesDatos;
 
 public class Carpin extends Pez {
     private int edad = 0;
