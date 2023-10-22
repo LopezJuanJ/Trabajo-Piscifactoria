@@ -5,7 +5,7 @@ import java.util.Random;
 public class Omnivoro {
     protected boolean alimentado;
 
-    public void comerOmnivoro(int pecesMuertos, int comida){
+    public int comerOmnivoro(int pecesMuertos, int comida){
         Random random = new Random();
         boolean comerMuerto = random.nextBoolean();
         boolean eliminarPez = random.nextBoolean();
@@ -21,6 +21,7 @@ public class Omnivoro {
                 alimentado=true;
             }
         }
+        return comida;
     }
 
 }

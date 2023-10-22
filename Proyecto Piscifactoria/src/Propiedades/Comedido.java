@@ -5,7 +5,7 @@ import java.util.Random;
 public class Comedido {
     protected boolean alimentado;
 
-    public void comerComedido(int pecesMuertos, int comida){
+    public int comerComedido(int pecesMuertos, int comida){
         Random random = new Random();
         
         int comerComida = random.nextInt(4);
@@ -15,5 +15,6 @@ public class Comedido {
                 alimentado = true;
             }
         }
+        return comida;
     }
 }

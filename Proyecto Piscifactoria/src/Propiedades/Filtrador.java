@@ -9,7 +9,7 @@ public class Filtrador {
     private boolean alimentado;
    
 
-    public void comerFiltrador(int comida){
+    public int comerFiltrador(int comida){
         Random random = new Random();
         if (alimentado = false){
             if (random.nextBoolean()){
@@ -18,5 +18,6 @@ public class Filtrador {
                 alimentado=true;
             } 
         }
+        return comida;
     }
 }
