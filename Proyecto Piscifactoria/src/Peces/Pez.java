@@ -56,14 +56,12 @@ public abstract class Pez {
      * @param comida Cantidad de comida restante en el almacén 
      */
     public void comprobarComida(int comida){
-        if (vida==true){
             if (comida == 0){
             alimentado=false;
         }else{
             alimentado=true;
         }
-        }
-        
+             
     }
 
 
@@ -85,6 +83,9 @@ public abstract class Pez {
 
 
     public void grow() {
+        if(vida == true){
+            
+        }
 
     }
     public void reset() {
