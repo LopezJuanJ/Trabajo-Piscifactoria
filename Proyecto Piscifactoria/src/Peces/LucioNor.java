@@ -3,10 +3,10 @@ package Peces;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class Koi extends Pez{
-   private PecesDatos datos = AlmacenPropiedades.KOI; 
+public class LucioNor extends Pez{
+   private PecesDatos datos = AlmacenPropiedades.LUCIO_NORTE; 
 
-   public Koi(boolean sexo, PecesDatos datos) {
+   public LucioNor(boolean sexo, PecesDatos datos) {
       super(sexo, datos);
       //TODO Auto-generated constructor stub
    }
