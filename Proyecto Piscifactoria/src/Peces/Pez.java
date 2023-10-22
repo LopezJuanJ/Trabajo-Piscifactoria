@@ -1,8 +1,13 @@
 package Peces;
+import java.util.Arrays;
 import java.util.Random;
 
+import Propiedades.Activo;
+import Propiedades.Omnivoro;
+import Propiedades.Voraz;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
+import propiedades.PecesProps;
 
 
 public abstract class Pez {
@@ -82,10 +87,9 @@ public abstract class Pez {
     
 
 
-    public void grow() {
-        if(vida == true){
-            
-        }
+    public void grow(String nombrePez) {
+        PecesDatos datos = AlmacenPropiedades.getPropByName(nombrePez);
+       
 
     }
     public void reset() {

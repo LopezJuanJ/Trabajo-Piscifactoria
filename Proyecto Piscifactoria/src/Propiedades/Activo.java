@@ -8,11 +8,14 @@ public class Activo {
     public void comerActivo(int comida){
         Random random = new Random();
         if (alimentado = false){
-            if (random.nextBoolean()){
+            if(comida >0){
+                if (random.nextBoolean()){
                 //Come
                 comida-=2;
                 alimentado=true;
-            } 
+            }
+            }
+             
         }
     }
 }
