@@ -1,4 +1,4 @@
-package Propiedades;
+package Peces.Propiedades;
 
 import java.util.Random;
 

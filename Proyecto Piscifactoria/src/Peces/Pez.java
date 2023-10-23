@@ -2,9 +2,9 @@ package Peces;
 import java.util.Arrays;
 import java.util.Random;
 
-import Propiedades.Activo;
-import Propiedades.Omnivoro;
-import Propiedades.Voraz;
+import Peces.Propiedades.Activo;
+import Peces.Propiedades.Omnivoro;
+import Peces.Propiedades.Voraz;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 import propiedades.PecesProps;

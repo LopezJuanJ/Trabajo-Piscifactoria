@@ -1,4 +1,4 @@
-package Propiedades;
+package Peces.Propiedades;
 
 public class Voraz {
     protected boolean alimentado;
