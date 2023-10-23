@@ -6,6 +6,7 @@ public class Almacen {
         if(comida > 0){
             comida-=cantidad;
         }else{
+
             System.out.println("Sin comida en el Almacen");
         }
     }
