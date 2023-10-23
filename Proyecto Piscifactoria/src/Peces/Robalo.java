@@ -3,12 +3,14 @@ package Peces;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class Carpa extends Pez {
-    private PecesDatos datos = AlmacenPropiedades.CARPA;
+public class Robalo extends Pez {
+    private PecesDatos datos = AlmacenPropiedades.ROBALO;
 
-    public Carpa(boolean sexo, PecesDatos datos) {
+    public Robalo(boolean sexo, PecesDatos datos) {
         super(sexo, datos);
+        //TODO Auto-generated constructor stub
     }
+
     public boolean verificarFertilidad(){  
         if (this.edad >= datos.getMadurez()){
             return true;

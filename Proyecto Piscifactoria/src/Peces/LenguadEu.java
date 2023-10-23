@@ -4,11 +4,11 @@ package Peces;
 import propiedades.PecesDatos;
 import propiedades.AlmacenPropiedades;
 
-public class Carpin extends Pez {
+public class LenguadEu extends Pez {
     private int edad = 0;
     
-    private PecesDatos datos = AlmacenPropiedades.CARPIN_TRES_ESPINAS;
-    public Carpin(boolean sexo, PecesDatos datos) {
+    private PecesDatos datos = AlmacenPropiedades.LENGUADO_EUROPEO;
+    public LenguadEu(boolean sexo, PecesDatos datos) {
         super(sexo, datos);
         
     }

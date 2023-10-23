@@ -3,12 +3,11 @@ package Peces;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class Sargo extends Pez {
-    private PecesDatos datos = AlmacenPropiedades.SARGO;
+public class TilapiaNi extends Pez {
+    private PecesDatos datos = AlmacenPropiedades.TILAPIA_NILO;
 
-    public Sargo(boolean sexo, PecesDatos datos) {
+    public TilapiaNi(boolean sexo, PecesDatos datos) {
         super(sexo, datos);
-        //TODO Auto-generated constructor stub
     }
 
     public boolean verificarFertilidad(){  
