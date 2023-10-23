@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 import Peces.Propiedades.Activo;
-import Peces.Propiedades.Omnivoro;
 import Peces.Propiedades.Voraz;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
