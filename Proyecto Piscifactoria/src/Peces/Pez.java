@@ -93,10 +93,10 @@ public abstract class Pez {
 
     }
     public void reset() {
-        edad = 0;
-        fertilidad = false;
-        vida = true;
-        alimentado = false;  
+        this.edad = 0;
+        this.fertilidad = false;
+        this.vida = true;
+        this.alimentado = false;  
 
     }
     

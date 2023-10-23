@@ -8,16 +8,29 @@ public class Monedero {
     public int getMonedas() {
         return this.monedas;
     }
+    
+    public void setMonedas(int monedas) {
+        this.monedas = monedas;
+    }
+    
 
-    public void sumarMonedas(int cantidad){
+    public void vender(int cantidad){
         this.monedas += cantidad;
     }
 
-    public void restarMonedas(int cantidad){
+    public void comprar(int cantidad){
         this.monedas -= cantidad;
     }
 
     public void saberMonedas(){
         System.out.println("Actualmente tienes: " + this.monedas + " monedas.");
+    }
+
+    public boolean posibilidadCompra(int cantidad){
+        if(cantidad< monedas){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
