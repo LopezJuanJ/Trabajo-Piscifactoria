@@ -1,5 +1,5 @@
 package Piscifactoria;
-public abstract class Piscifactoria {
+public  class Piscifactoria {
     protected int comidaActual;
     protected int comidaMaxima;
     

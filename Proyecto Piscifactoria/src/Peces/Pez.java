@@ -1,24 +1,33 @@
 package Peces;
-import java.util.Arrays;
+
 import java.util.Random;
 
-import Peces.Propiedades.Activo;
-import Peces.Propiedades.Voraz;
 import Piscifactoria.Piscifactoria;
 import Tanque.Tanque;
-import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
-import propiedades.PecesProps;
 
 
 public abstract class Pez {
 
     protected int edad = 0;
-    private boolean sexo;
-    private boolean fertilidad;
-    private boolean vida;
-    private boolean alimentado;
+    protected boolean sexo;
+    protected boolean fertilidad;
+    protected boolean vida;
+    protected boolean alimentado;
     protected PecesDatos datos;
+
+    public boolean isVida() {
+        return vida;
+    }
+
+
+
+
+    public void setVida(boolean vida) {
+        this.vida = vida;
+    }
+
+
     
     public abstract void comer(Tanque tanque, Piscifactoria piscifactoria);
 
@@ -60,6 +69,7 @@ public abstract class Pez {
         }
     }
 
+   
     public boolean verificarFertilidad(PecesDatos datos){  
         if (this.edad >= datos.getMadurez()){
             return true;
@@ -95,9 +105,15 @@ public abstract class Pez {
     
 
 
-    public void grow() {
+    public void grow(Tanque tanque, Piscifactoria piscifactoria ) {
+        Random random = new Random();
         if(this.vida = true){
-            
+            comer(tanque, piscifactoria);            
+            if(!alimentado && !random.nextBoolean()){
+                this.vida = false;
+            }else{
+                this.edad++;
+            }
         }
         
 
