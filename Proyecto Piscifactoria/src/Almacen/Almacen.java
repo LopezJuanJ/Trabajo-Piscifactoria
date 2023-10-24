@@ -1,3 +1,4 @@
+package Almacen;
 public class Almacen {
     protected int comida;
     

@@ -1,3 +1,4 @@
+package Simulador;
 import estadisticas.Estadisticas;
 
 public class Simulador {

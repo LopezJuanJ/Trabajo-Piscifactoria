@@ -1,3 +1,4 @@
+package Tanque;
 import Peces.Pez;
 
 public class Tanque {
