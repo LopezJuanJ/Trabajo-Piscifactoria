@@ -1,5 +1,6 @@
 package Peces;
 
+import java.security.cert.TrustAnchor;
 import java.util.Random;
 
 import Piscifactoria.Piscifactoria;
@@ -15,6 +16,7 @@ public abstract class Pez {
     protected boolean vida;
     protected boolean alimentado;
     protected PecesDatos datos;
+    protected int ciclo;
 
     public boolean isVida() {
         return vida;
@@ -70,13 +72,13 @@ public abstract class Pez {
     }
 
    
-    public boolean verificarFertilidad(PecesDatos datos){  
-        if (this.edad >= datos.getMadurez()){
-            return true;
-        }else{
-            return false;
-        }
-    }
+    // public boolean verificarFertilidad(PecesDatos datos){  
+    //    if (!verificarMadurez(datos)){
+    //      return false;
+    //    } else if(datos.getCiclo() == 1){
+    //     return true;
+    //    } 
+    // }
 
     
     public boolean verificarMadurez(PecesDatos datos){
@@ -86,6 +88,8 @@ public abstract class Pez {
             return false;
         }
     }
+
+
     /**
      * Método que comprobar si un pez esta alimentado 
      * @param comida Cantidad de comida restante en el almacén 
@@ -113,7 +117,16 @@ public abstract class Pez {
                 this.vida = false;
             }else{
                 this.edad++;
+                
             }
+           if (verificarMadurez(datos)){
+                this.ciclo--;
+           } 
+           if( this.ciclo == 0){
+            this.fertilidad=true;
+           } else{
+            this.fertilidad=false;
+        }
         }
         
 
