@@ -1,6 +1,14 @@
 package Peces.Propiedades;
 
-public class Voraz {
+import Peces.Pez;
+import propiedades.PecesDatos;
+
+public class Voraz extends Pez {
+    public Voraz(boolean sexo, PecesDatos datos) {
+        super(sexo, datos);
+        //TODO Auto-generated constructor stub
+    }
+
     protected boolean alimentado;
 
     public int comerVoraz(int comida){

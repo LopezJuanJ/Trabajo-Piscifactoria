@@ -3,9 +3,18 @@ package Peces.Propiedades;
 
 import java.util.Random;
 
+import Peces.Pez;
+import propiedades.PecesDatos;
 
-public class Filtrador {
+
+public class Filtrador extends Pez {
     
+    public Filtrador(boolean sexo, PecesDatos datos) {
+        super(sexo, datos);
+        //TODO Auto-generated constructor stub
+    }
+
+
     private boolean alimentado;
    
 

@@ -2,7 +2,15 @@ package Peces.Propiedades;
 
 import java.util.Random;
 
-public class Carnivoro {
+import Peces.Pez;
+import propiedades.PecesDatos;
+
+public class Carnivoro extends Pez{
+    public Carnivoro(boolean sexo, PecesDatos datos) {
+        super(sexo, datos);
+        //TODO Auto-generated constructor stub
+    }
+
     protected boolean alimentado;
 
     public int comerCarnivoro(int pecesMuertos, int comida){
