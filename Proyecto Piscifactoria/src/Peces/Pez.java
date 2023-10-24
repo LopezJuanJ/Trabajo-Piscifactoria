@@ -9,7 +9,7 @@ import propiedades.PecesDatos;
 import propiedades.PecesProps;
 
 
-public abstract class Pez {
+public class Pez {
 
     protected int edad = 0;
     private boolean sexo;

@@ -1,3 +1,4 @@
+package Monedero;
 public class Monedero {
     private int monedas;
 
