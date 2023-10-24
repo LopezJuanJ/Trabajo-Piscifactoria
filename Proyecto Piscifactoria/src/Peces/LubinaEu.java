@@ -1,9 +1,10 @@
 package Peces;
 
+import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class LubinaEu extends Pez {
+public class LubinaEu extends Carnivoro {
     private PecesDatos datos = AlmacenPropiedades.LUBINA_EUROPEA;   
 
  public LubinaEu(boolean sexo, PecesDatos datos) {
@@ -26,4 +27,6 @@ public class LubinaEu extends Pez {
             return false;
         }
     }
+    
+    
 }

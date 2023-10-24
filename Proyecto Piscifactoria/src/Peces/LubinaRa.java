@@ -1,9 +1,10 @@
 package Peces;
 
+import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class LubinaRa extends Pez {
+public class LubinaRa extends Carnivoro {
    private PecesDatos datos = AlmacenPropiedades.LUBINA_RAYADA; 
 
    public LubinaRa(boolean sexo, PecesDatos datos) {
@@ -27,4 +28,6 @@ public class LubinaRa extends Pez {
           return false;
       }
   }
+
+
 }

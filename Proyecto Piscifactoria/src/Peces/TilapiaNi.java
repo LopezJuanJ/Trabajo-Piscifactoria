@@ -1,9 +1,10 @@
 package Peces;
 
+import Peces.Propiedades.Filtrador;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class TilapiaNi extends Pez {
+public class TilapiaNi extends Filtrador {
     private PecesDatos datos = AlmacenPropiedades.TILAPIA_NILO;
 
     public TilapiaNi(boolean sexo, PecesDatos datos) {
@@ -26,4 +27,6 @@ public class TilapiaNi extends Pez {
             return false;
         }
     }
+
+    
 }

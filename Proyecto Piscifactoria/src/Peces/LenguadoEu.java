@@ -2,13 +2,14 @@ package Peces;
 
 
 import propiedades.PecesDatos;
+import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 
-public class LenguadEu extends Pez {
+public class LenguadoEu extends  Carnivoro{
     private int edad = 0;
     
     private PecesDatos datos = AlmacenPropiedades.LENGUADO_EUROPEO;
-    public LenguadEu(boolean sexo, PecesDatos datos) {
+    public LenguadoEu(boolean sexo, PecesDatos datos) {
         super(sexo, datos);
         
     }
@@ -27,5 +28,6 @@ public class LenguadEu extends Pez {
         }else{
             return false;
         }
-    }  
+    }
+     
 }

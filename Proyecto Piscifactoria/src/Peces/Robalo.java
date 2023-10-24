@@ -1,9 +1,10 @@
 package Peces;
 
+import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class Robalo extends Pez {
+public class Robalo extends Carnivoro {
     private PecesDatos datos = AlmacenPropiedades.ROBALO;
 
     public Robalo(boolean sexo, PecesDatos datos) {
@@ -27,4 +28,5 @@ public class Robalo extends Pez {
             return false;
         }
     }
+
 }

@@ -3,6 +3,8 @@ package Peces.Propiedades;
 import java.util.Random;
 
 import Peces.Pez;
+import Piscifactoria.Piscifactoria;
+import Tanque.Tanque;
 import propiedades.PecesDatos;
 
 public class Activo extends Pez {
@@ -13,18 +15,20 @@ public class Activo extends Pez {
 
     protected boolean alimentado;
 
-    public int comerActivo(int comida){
-        Random random = new Random();
-        if (alimentado = false){
-            if(comida >0){
-                if (random.nextBoolean()){
-                //Come
-                comida-=2;
-                alimentado=true;
-            }
-            }
-             
+     @Override
+    public void comer(Tanque tanque, Piscifactoria piscifactoria) {
+       Random random = new Random();
+        int comida = piscifactoria.getComidaActual();
+        if(alimentado= false){
+        comida--;
+        if(random.nextBoolean()){
+            comida--;
+            alimentado=true;
+        }else{
+            alimentado=true;
         }
-        return comida;
+       } 
     }
-}
+
+}    
+

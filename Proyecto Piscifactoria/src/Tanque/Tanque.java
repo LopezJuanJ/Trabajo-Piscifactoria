@@ -1,14 +1,24 @@
 package Tanque;
-public class Tanque {
-    public int comida;
 
-    public int getComida() {
-        return comida;
+import Piscifactoria.Piscifactoria;
+
+public class Tanque  extends Piscifactoria{
+    public Tanque tanque;
+    public int PecesMuertos;
+    
+    /**
+     * 
+     */
+    
+    public int getPecesMuertos() {
+        return PecesMuertos;
     }
 
-    public void setComida(int comida) {
-        this.comida = comida;
+
+    public void setPecesMuertos(int pecesMuertos) {
+        PecesMuertos = pecesMuertos;
     }
+
 
     public void showStatus(){
 

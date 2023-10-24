@@ -27,4 +27,10 @@ public class LucioNor extends Pez{
           return false;
       }
   }
+
+@Override
+public void comer() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'comer'");
+}
 }

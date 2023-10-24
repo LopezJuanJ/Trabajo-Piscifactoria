@@ -1,6 +1,10 @@
 package Peces.Propiedades;
 
+import java.util.Random;
+
 import Peces.Pez;
+import Piscifactoria.Piscifactoria;
+import Tanque.Tanque;
 import propiedades.PecesDatos;
 
 public class Voraz extends Pez {
@@ -11,11 +15,15 @@ public class Voraz extends Pez {
 
     protected boolean alimentado;
 
-    public int comerVoraz(int comida){
+
+    @Override
+    public void comer(Tanque tanque, Piscifactoria piscifactoria) {
+        int comida = piscifactoria.getComidaActual();
         if(alimentado=false){
             comida-=2;
             alimentado=true;
         }
-        return comida;
+
+
     }
 }

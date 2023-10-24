@@ -1,9 +1,10 @@
 package Peces;
 
+import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class SalmonCh extends Pez {
+public class SalmonCh extends Carnivoro {
    private PecesDatos datos = AlmacenPropiedades.SALMON_CHINOOK; 
 
    public SalmonCh(boolean sexo, PecesDatos datos) {
@@ -27,4 +28,6 @@ public class SalmonCh extends Pez {
           return false;
       }
   }
+
+
 }

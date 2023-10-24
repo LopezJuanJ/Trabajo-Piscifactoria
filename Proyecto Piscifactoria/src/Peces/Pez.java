@@ -4,12 +4,14 @@ import java.util.Random;
 
 import Peces.Propiedades.Activo;
 import Peces.Propiedades.Voraz;
+import Piscifactoria.Piscifactoria;
+import Tanque.Tanque;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 import propiedades.PecesProps;
 
 
-public class Pez {
+public abstract class Pez {
 
     protected int edad = 0;
     private boolean sexo;
@@ -18,6 +20,9 @@ public class Pez {
     private boolean alimentado;
     protected PecesDatos datos;
     
+    public abstract void comer(Tanque tanque, Piscifactoria piscifactoria);
+
+
 
   
     public Pez (boolean sexo, PecesDatos datos) {
@@ -91,6 +96,8 @@ public class Pez {
        
 
     }
+
+    
     public void reset() {
         this.edad = 0;
         this.fertilidad = false;
