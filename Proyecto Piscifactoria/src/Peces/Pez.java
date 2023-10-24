@@ -60,6 +60,22 @@ public abstract class Pez {
         }
     }
 
+    public boolean verificarFertilidad(PecesDatos datos){  
+        if (this.edad >= datos.getMadurez()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    
+    public boolean verificarMadurez(PecesDatos datos){
+        if (this.edad >= datos.getMadurez()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     /**
      * Método que comprobar si un pez esta alimentado 
      * @param comida Cantidad de comida restante en el almacén 
@@ -74,26 +90,17 @@ public abstract class Pez {
     }
 
 
-    /**
-     * Método para saber la posibilidad de vida de un pez
-     */
-    public void comprobarVida(){
-        Random random = new Random();
-        if (alimentado = false){
-            if (random.nextBoolean()){
-                this.edad++;
-            } else {
-                this.vida=false;
-            }
-        }
-    }
+    
 
     
 
 
     public void grow(String nombrePez) {
         PecesDatos datos = AlmacenPropiedades.getPropByName(nombrePez);
-       
+        if(this.vida = true){
+            
+        }
+        
 
     }
 

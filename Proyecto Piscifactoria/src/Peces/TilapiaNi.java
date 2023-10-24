@@ -11,22 +11,7 @@ public class TilapiaNi extends Filtrador {
         super(sexo, datos);
     }
 
-    public boolean verificarFertilidad(){  
-        if (this.edad >= datos.getMadurez()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     
-    public boolean verificarMadurez(){
-        if (this.edad >= datos.getMadurez()){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     
 }

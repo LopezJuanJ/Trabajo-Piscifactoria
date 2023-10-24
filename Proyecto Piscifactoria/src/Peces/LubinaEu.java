@@ -11,22 +11,6 @@ public class LubinaEu extends Carnivoro {
         super(sexo, datos);
         //TODO Auto-generated constructor stub
     }
-    public boolean verificarFertilidad(){  
-        if (this.edad >= datos.getMadurez()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    
-    public boolean verificarMadurez(){
-        if (this.edad >= datos.getMadurez()){
-            return true;
-        }else{
-            return false;
-        }
-    }
     
     
 }
