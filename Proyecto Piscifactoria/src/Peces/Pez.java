@@ -95,8 +95,7 @@ public abstract class Pez {
     
 
 
-    public void grow(String nombrePez) {
-        PecesDatos datos = AlmacenPropiedades.getPropByName(nombrePez);
+    public void grow() {
         if(this.vida = true){
             
         }
