@@ -12,33 +12,17 @@ public abstract class Pez {
 
     protected int edad = 0;
     protected boolean sexo;
-    protected boolean fertilidad;
+
+    public boolean fertilidad;
     protected boolean vida;
     protected boolean alimentado;
     protected PecesDatos datos;
     protected int ciclo;
-
-    public boolean isVida() {
-        return vida;
-    }
-
-
-
-
-    public void setVida(boolean vida) {
-        this.vida = vida;
-    }
-
-
-    
     public abstract void comer(Tanque tanque, Piscifactoria piscifactoria);
-
-
-
-  
+    
     public Pez (boolean sexo, PecesDatos datos) {
         this.edad = 0;
-        this.sexo = true;
+        this.sexo = sexo;
         this.datos = datos;
         
     }
@@ -104,10 +88,6 @@ public abstract class Pez {
     }
 
 
-    
-
-    
-
 
     public void grow(Tanque tanque, Piscifactoria piscifactoria ) {
         Random random = new Random();
@@ -131,7 +111,6 @@ public abstract class Pez {
         
 
     }
-
     
     public void reset() {
         this.edad = 0;
@@ -140,5 +119,23 @@ public abstract class Pez {
         this.alimentado = false;  
 
     }
-    
+
+
+    public boolean isVida() {
+        return vida;
+    }
+
+    public void setVida(boolean vida) {
+        this.vida = vida;
+    }
+
+      public boolean isSexo() {
+        return sexo;
+    }
+
+    public void setSexo(boolean sexo) {
+        this.sexo = sexo;
+    }
+
+  
 }

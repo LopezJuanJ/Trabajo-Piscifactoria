@@ -14,11 +14,6 @@ public class Tanque <T extends Pez> {
         this.capacidad = capacidad;
     }
 
-
-
-    /**
-     * 
-     */
     
     public int getPecesMuertos() {
         int pecesMuertos = 0;
@@ -44,7 +39,29 @@ public class Tanque <T extends Pez> {
     public void showCapacity(){
         int ocupacion = (int)((double) peces.size()/capacidad * 100);
     }
-
+    
+    public void reproduccion() {
+        boolean machoFertil = false;
+        boolean hembraFertil = false;
+    
+        for(T pez : peces){
+            if(pez.isSexo() && pez.fertilidad){
+                machoFertil = true;
+            } else if(!pez.isSexo()  && pez.fertilidad){
+                hembraFertil = true;
+            }
+    
+            if(machoFertil && hembraFertil){
+                System.out.println("Los peces se pueden reproducir");
+                break;
+            }
+        }
+    
+        if(!machoFertil || !hembraFertil){
+            System.out.println("Los peces no se pueden reproducir");
+        }
+    }
+   
+    
 }
-
     
