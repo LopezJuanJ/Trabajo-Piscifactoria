@@ -22,6 +22,15 @@ public  class Piscifactoria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public int obtenerComidaMaximaPis(){
+        if(this instanceof IRio){
+        return  25;
+    }else{
+        return 100;
+    }   
+    }
+
     
     public int obtenerCapacidadMaximaPis(){
         if(this instanceof IRio){
