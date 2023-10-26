@@ -7,8 +7,8 @@ import propiedades.PecesDatos;
 public class Caballa extends Carnivoro {
     private PecesDatos datos = AlmacenPropiedades.CABALLA;
 
-    public Caballa(boolean sexo, PecesDatos datos) {
-        super(sexo, datos);
+    public Caballa(boolean sexo) {
+        super(sexo, AlmacenPropiedades.CABALLA);
         
     }
 

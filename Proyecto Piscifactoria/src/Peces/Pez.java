@@ -102,8 +102,6 @@ public abstract class Pez {
             this.fertilidad=false;
         }
         }
-        
-
     }
     
     public void reset() {

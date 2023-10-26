@@ -7,8 +7,9 @@ import propiedades.PecesDatos;
 public class Pejerrey extends Carnivoro {
     private PecesDatos datos = AlmacenPropiedades.PEJERREY;
 
-    public Pejerrey(boolean sexo, PecesDatos datos) {
-        super(sexo, datos);
+    public Pejerrey(boolean sexo) {
+        super(sexo, AlmacenPropiedades.PEJERREY);
+
         //TODO Auto-generated constructor stub
     }
 

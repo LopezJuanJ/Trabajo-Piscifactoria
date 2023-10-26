@@ -7,8 +7,9 @@ import propiedades.PecesDatos;
 public class LubinaEu extends Carnivoro {
     private PecesDatos datos = AlmacenPropiedades.LUBINA_EUROPEA;   
 
- public LubinaEu(boolean sexo, PecesDatos datos) {
-        super(sexo, datos);
+ public LubinaEu(boolean sexo) {
+    super(sexo, AlmacenPropiedades.LUBINA_EUROPEA);
+
         //TODO Auto-generated constructor stub
     }
     
