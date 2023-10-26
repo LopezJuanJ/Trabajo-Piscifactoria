@@ -6,8 +6,7 @@ public  class Piscifactoria {
     
     
     public Piscifactoria(String nombre) {
-        this.comidaActual = comidaActual;
-        this.comidaMaxima = comidaMaxima;
+        
         this.nombre = nombre;
     }
     public int getComidaMaxima() {

@@ -102,7 +102,7 @@ public abstract class Pez {
         Random random = new Random();
         if(this.vida = true){
             comer(tanque, piscifactoria);            
-            if(!alimentado && !random.nextBoolean()){
+            if(!this.alimentado && !random.nextBoolean()){
                 this.vida = false;
             }else{
                 this.edad++;
