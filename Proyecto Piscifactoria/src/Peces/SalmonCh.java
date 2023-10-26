@@ -4,7 +4,7 @@ import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class SalmonCh extends Carnivoro {
+public class SalmonCh extends Carnivoro implements IRio {
    private PecesDatos datos = AlmacenPropiedades.SALMON_CHINOOK; 
 
    public SalmonCh(boolean sexo, PecesDatos datos) {

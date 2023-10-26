@@ -1,5 +1,7 @@
 package Simulador;
 import Peces.Besugo;
+import Peces.Pez;
+import Tanque.Tanque;
 import estadisticas.Estadisticas;
 
 public class Simulador {
@@ -10,8 +12,11 @@ public class Simulador {
   
   public static void main(String[] args) {
     
-    Besugo besugo = new Besugo(true);
-    besugo.showStatus();
+    // Besugo besugo = new Besugo(true);
+    // besugo.showStatus();
+    Tanque tnq = new Tanque<Pez>("Tanqueta", 25);
+    int i = tnq.getPeces().size();
+    System.out.println(i);
   }
 
   //public Estadisticas estadisticas = new Estadisticas( );

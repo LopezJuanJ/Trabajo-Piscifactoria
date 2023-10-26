@@ -4,7 +4,7 @@ import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class Caballa extends Carnivoro {
+public class Caballa extends Carnivoro implements IMar {
     private PecesDatos datos = AlmacenPropiedades.CABALLA;
 
     public Caballa(boolean sexo) {
