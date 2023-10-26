@@ -4,7 +4,7 @@ import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class Besugo extends Carnivoro {
+public class Besugo extends Carnivoro implements IMar {
   private PecesDatos datos = AlmacenPropiedades.BESUGO;  
 
   public Besugo(boolean sexo) {

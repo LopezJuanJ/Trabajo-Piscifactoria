@@ -20,11 +20,26 @@ public abstract class Pez {
     protected int ciclo;
     public abstract void comer(Tanque tanque, Piscifactoria piscifactoria);
     
+
     public Pez (boolean sexo, PecesDatos datos) {
         this.edad = 0;
         this.sexo = sexo;
         this.datos = datos;
         
+    }
+    public boolean isFertilidad() {
+        return fertilidad;
+    }
+
+    public void setFertilidad(boolean fertilidad) {
+        this.fertilidad = fertilidad;
+    }
+    public boolean isAlimentado() {
+        return alimentado;
+    }
+
+    public void setAlimentado(boolean alimentado) {
+        this.alimentado = alimentado;
     }
     public void showStatus() {
         System.out.println("---------------" + this.datos.getNombre() + "---------------");
@@ -59,7 +74,7 @@ public abstract class Pez {
    
 
     
-    public boolean verificarMadurez(PecesDatos datos){
+    public boolean verificarMadurez(){
         if (this.edad >= datos.getMadurez()){
             return true;
         }else{
@@ -87,13 +102,13 @@ public abstract class Pez {
         Random random = new Random();
         if(this.vida = true){
             comer(tanque, piscifactoria);            
-            if(!alimentado && !random.nextBoolean()){
+            if(!this.alimentado && !random.nextBoolean()){
                 this.vida = false;
             }else{
                 this.edad++;
                 
             }
-           if (verificarMadurez(datos)){
+           if (verificarMadurez()){
                 this.ciclo--;
            } 
            if( this.ciclo == 0){
@@ -103,6 +118,7 @@ public abstract class Pez {
         }
         }
     }
+    
     
     public void reset() {
         this.edad = 0;

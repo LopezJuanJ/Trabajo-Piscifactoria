@@ -2,7 +2,13 @@ package Piscifactoria;
 public  class Piscifactoria {
     protected int comidaActual;
     protected int comidaMaxima;
+    protected String nombre;
     
+    
+    public Piscifactoria(String nombre) {
+        
+        this.nombre = nombre;
+    }
     public int getComidaMaxima() {
         return comidaMaxima;
     }
