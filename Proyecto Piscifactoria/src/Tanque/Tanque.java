@@ -2,6 +2,7 @@ package Tanque;
 
 import java.util.ArrayList;
 
+import Peces.IRio;
 import Peces.Pez;
 import Piscifactoria.Piscifactoria;
 
@@ -13,6 +14,7 @@ public class Tanque <T extends Pez> {
     public String nombre;
     
     
+   
     public Tanque(String nombre, int capacidadMax) {
         this.peces = new ArrayList<>();
         this.nombre = nombre;
@@ -35,7 +37,12 @@ public class Tanque <T extends Pez> {
         System.out.println("Hembras/Machos: "+ getMachos() +"/" + getHembras());
         System.out.println("Fertiles: "+ getPecesFertiles()+"/"+getPecesVivos()+"("+ (getPecesFertiles()/getPecesVivos()*100)+"%)");
     }
-
+ public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     public int getMachos(){
         int getMachos = 0;
         for(T pez: peces){
@@ -143,7 +150,11 @@ public class Tanque <T extends Pez> {
             System.out.println("Los peces no se pueden reproducir");
         }
     }
-   
+    
+   public void showCapacity(){
+    Piscifactoria psc = new Piscifactoria(nombre);
+    System.out.println("Tanque " + this.nombre + " de la piscifactoria " + psc.getNombre() + " al " + (getPeces().size()/capacidadMax)*100 + "% de capacidad" + getPeces() + "/" + psc.obtenerCapacidadMaximaPis());
+   }
     
 }
     
