@@ -1,28 +1,19 @@
 package Peces;
 
+import Peces.Propiedades.CarnivoroVoraz;
+import Piscifactoria.Piscifactoria;
+import Tanque.Tanque;
 import propiedades.AlmacenPropiedades;
 import propiedades.PecesDatos;
 
-public class Corvina extends Pez {
+public class Corvina extends CarnivoroVoraz {
     private PecesDatos datos = AlmacenPropiedades.CORVINA;
 
-    public Corvina(boolean sexo, PecesDatos datos) {
-        super(sexo, datos);
-    }
-    public boolean verificarFertilidad(){  
-        if (this.edad >= datos.getMadurez()){
-            return true;
-        }else{
-            return false;
-        }
+    public Corvina(boolean sexo) {
+        super(sexo, AlmacenPropiedades.CORVINA);
+
     }
 
     
-    public boolean verificarMadurez(){
-        if (this.edad >= datos.getMadurez()){
-            return true;
-        }else{
-            return false;
-        }
-    }
+    
 }

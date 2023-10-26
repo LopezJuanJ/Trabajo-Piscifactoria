@@ -1,5 +1,4 @@
 package Piscifactoria;
-
-public class PiscRio {
+public class PiscRio extends Piscifactoria {
     
 }

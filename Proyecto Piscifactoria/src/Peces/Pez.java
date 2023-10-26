@@ -1,28 +1,28 @@
 package Peces;
-import java.util.Arrays;
+
+import java.security.cert.TrustAnchor;
 import java.util.Random;
 
-import Peces.Propiedades.Activo;
-import Peces.Propiedades.Voraz;
-import propiedades.AlmacenPropiedades;
+import Piscifactoria.Piscifactoria;
+import Tanque.Tanque;
 import propiedades.PecesDatos;
-import propiedades.PecesProps;
 
 
 public abstract class Pez {
 
     protected int edad = 0;
-    private boolean sexo;
-    private boolean fertilidad;
-    private boolean vida;
-    private boolean alimentado;
-    protected PecesDatos datos;
-    
+    protected boolean sexo;
 
-  
+    public boolean fertilidad;
+    protected boolean vida;
+    protected boolean alimentado;
+    protected PecesDatos datos;
+    protected int ciclo;
+    public abstract void comer(Tanque tanque, Piscifactoria piscifactoria);
+    
     public Pez (boolean sexo, PecesDatos datos) {
         this.edad = 0;
-        this.sexo = true;
+        this.sexo = sexo;
         this.datos = datos;
         
     }
@@ -55,6 +55,19 @@ public abstract class Pez {
         }
     }
 
+   
+   
+
+    
+    public boolean verificarMadurez(PecesDatos datos){
+        if (this.edad >= datos.getMadurez()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     /**
      * Método que comprobar si un pez esta alimentado 
      * @param comida Cantidad de comida restante en el almacén 
@@ -69,28 +82,28 @@ public abstract class Pez {
     }
 
 
-    /**
-     * Método para saber la posibilidad de vida de un pez
-     */
-    public void comprobarVida(){
+
+    public void grow(Tanque<? extends Pez> tanque, Piscifactoria piscifactoria ) {
         Random random = new Random();
-        if (alimentado = false){
-            if (random.nextBoolean()){
+        if(this.vida = true){
+            comer(tanque, piscifactoria);            
+            if(!alimentado && !random.nextBoolean()){
+                this.vida = false;
+            }else{
                 this.edad++;
-            } else {
-                this.vida=false;
+                
             }
+           if (verificarMadurez(datos)){
+                this.ciclo--;
+           } 
+           if( this.ciclo == 0){
+            this.fertilidad=true;
+           } else{
+            this.fertilidad=false;
+        }
         }
     }
-
     
-
-
-    public void grow(String nombrePez) {
-        PecesDatos datos = AlmacenPropiedades.getPropByName(nombrePez);
-       
-
-    }
     public void reset() {
         this.edad = 0;
         this.fertilidad = false;
@@ -98,5 +111,23 @@ public abstract class Pez {
         this.alimentado = false;  
 
     }
-    
+
+
+    public boolean isVida() {
+        return vida;
+    }
+
+    public void setVida(boolean vida) {
+        this.vida = vida;
+    }
+
+      public boolean isSexo() {
+        return sexo;
+    }
+
+    public void setSexo(boolean sexo) {
+        this.sexo = sexo;
+    }
+
+  
 }

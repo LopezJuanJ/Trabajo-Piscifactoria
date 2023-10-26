@@ -1,4 +1,4 @@
 package Piscifactoria;
-public class PiscMar {
+public class PiscMar extends Piscifactoria {
     
 }
