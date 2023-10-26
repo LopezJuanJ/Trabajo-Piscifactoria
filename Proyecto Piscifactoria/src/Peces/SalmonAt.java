@@ -2,13 +2,11 @@ package Peces;
 
 import Peces.Propiedades.Carnivoro;
 import propiedades.AlmacenPropiedades;
-import propiedades.PecesDatos;
 
 public class SalmonAt extends Carnivoro implements IMar, IRio{
-    private PecesDatos datos = AlmacenPropiedades.SALMON_ATLANTICO;
 
-    public SalmonAt(boolean sexo, PecesDatos datos) {
-        super(sexo, datos);
+    public SalmonAt(boolean sexo) {
+        super(sexo, AlmacenPropiedades.SALMON_ATLANTICO);
         //TODO Auto-generated constructor stub
     }
 

@@ -1,6 +1,5 @@
 package Peces;
 
-import java.security.cert.TrustAnchor;
 import java.util.Random;
 
 import Piscifactoria.Piscifactoria;
@@ -18,7 +17,7 @@ public abstract class Pez {
     protected boolean alimentado;
     protected PecesDatos datos;
     protected int ciclo;
-    public abstract void comer(Tanque tanque, Piscifactoria piscifactoria);
+    public abstract void comer(Tanque<? extends Pez> tanque, Piscifactoria piscifactoria);
     
 
     public Pez (boolean sexo, PecesDatos datos) {
