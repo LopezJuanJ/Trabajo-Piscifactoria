@@ -1,4 +1,5 @@
 package Simulador;
+import Peces.Besugo;
 import estadisticas.Estadisticas;
 
 public class Simulador {
@@ -7,6 +8,11 @@ public class Simulador {
   public String nombreEpresa;
   public String[] nombrePeces= {propiedades.AlmacenPropiedades.CARPIN_TRES_ESPINAS.getNombre(), propiedades.AlmacenPropiedades.KOI.getNombre(), propiedades.AlmacenPropiedades.CARPA.getNombre(), propiedades.AlmacenPropiedades.SALMON_CHINOOK.getNombre(), propiedades.AlmacenPropiedades.PEJERREY.getNombre(), propiedades.AlmacenPropiedades.COBIA.getNombre(), propiedades.AlmacenPropiedades.CABALLA.getNombre(), propiedades.AlmacenPropiedades.BESUGO.getNombre(), propiedades.AlmacenPropiedades.SARGO.getNombre(), propiedades.AlmacenPropiedades.LUBINA_RAYADA.getNombre(), propiedades.AlmacenPropiedades.DORADA.getNombre(), propiedades.AlmacenPropiedades.SALMON_ATLANTICO.getNombre() };
   
+  public static void main(String[] args) {
+    
+    Besugo besugo = new Besugo(true);
+    besugo.showStatus();
+  }
 
   //public Estadisticas estadisticas = new Estadisticas( );
     public void init(){

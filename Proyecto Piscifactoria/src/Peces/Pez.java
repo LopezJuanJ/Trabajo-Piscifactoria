@@ -56,13 +56,7 @@ public abstract class Pez {
     }
 
    
-    // public boolean verificarFertilidad(PecesDatos datos){  
-    //    if (!verificarMadurez(datos)){
-    //      return false;
-    //    } else if(datos.getCiclo() == 1){
-    //     return true;
-    //    } 
-    // }
+   
 
     
     public boolean verificarMadurez(PecesDatos datos){
@@ -89,7 +83,7 @@ public abstract class Pez {
 
 
 
-    public void grow(Tanque tanque, Piscifactoria piscifactoria ) {
+    public void grow(Tanque<? extends Pez> tanque, Piscifactoria piscifactoria ) {
         Random random = new Random();
         if(this.vida = true){
             comer(tanque, piscifactoria);            
