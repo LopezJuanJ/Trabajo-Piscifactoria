@@ -143,6 +143,13 @@ public abstract class Pez {
     public void setSexo(boolean sexo) {
         this.sexo = sexo;
     }
+    public PecesDatos getDatos() {
+        return datos;
+    }
 
+
+    public void setDatos(PecesDatos datos) {
+        this.datos = datos;
+    }
   
 }

@@ -12,7 +12,6 @@ public class Almacen {
         }
     }
 
-
     public int getComida() {
         return comida;
     }
