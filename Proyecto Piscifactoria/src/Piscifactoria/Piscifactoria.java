@@ -6,6 +6,7 @@ import Almacen.Almacen;
 import Monedero.Monedero;
 import Peces.IRio;
 import Peces.Pez;
+import Simulador.Simulador;
 import Tanque.Tanque;
 import propiedades.PecesDatos;
 
@@ -14,17 +15,17 @@ public class Piscifactoria {
     protected int comidaMaxima;
     protected int espacioMaximo;
     protected String nombre;
-
+    protected Simulador simulador;
+    protected String tipo;
+    public ArrayList<Tanque<? extends Pez>> tanques;
+    
     public Piscifactoria(String nombre) {
         this.nombre = nombre;
     }
 
-    protected String tipo;
-    public ArrayList<Tanque<? extends Pez>> tanques;
-
    
     public void showStatus() {
-        System.out.println("=============== nombre ===============");
+        System.out.println("===============" + simulador.getNombrePiscifactoria() + "===============");
         System.out.println("Tanques: ");
         System.out.println("Ocupación: peces / max (x%)");
         System.out.println("Peces vivos: vivos / total (x%)");
@@ -62,7 +63,9 @@ public class Piscifactoria {
     public void nextDay() {
         for (Tanque<? extends Pez> tanque : tanques) {
             tanque.nextDay(tanque, this);
-            
+            if (comidaActual !=0){
+                
+            }
             
         }
     }
@@ -72,7 +75,7 @@ public class Piscifactoria {
             String nombreTanque = tanque.getNombre();
           Tanque<? extends Pez> tnq = new Tanque<Pez>(nombreTanque , obtenerCapacidadMaximaPis());
             for (Pez pez : tnq.getPeces()){
-                if(pez.isVida()==true && pez.verificarMadurez()){
+                if(pez.isVida() == true && pez.verificarMadurez()){
                     PecesDatos datos = pez.getDatos();
                     int precio = datos.getMonedas();
                     Monedero monedero = Monedero.getInstance();
