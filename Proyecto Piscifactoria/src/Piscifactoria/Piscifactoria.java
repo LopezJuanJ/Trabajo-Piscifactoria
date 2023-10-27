@@ -2,7 +2,6 @@ package Piscifactoria;
 
 import java.util.ArrayList;
 
-import Almacen.Almacen;
 import Monedero.Monedero;
 import Peces.IRio;
 import Peces.Pez;
@@ -13,6 +12,7 @@ import propiedades.PecesDatos;
 public class Piscifactoria {
     protected int comidaActual;
     protected int comidaMaxima;
+   
     protected int espacioMaximo;
     protected String nombre;
     protected Simulador simulador;
@@ -22,6 +22,10 @@ public class Piscifactoria {
     public Piscifactoria(String nombre) {
         this.nombre = nombre;
     }
+    public int getComidaMaxima() {
+        return comidaMaxima;
+    }
+
 
    
     public void showStatus() {
@@ -51,11 +55,11 @@ public class Piscifactoria {
     }
 
     public void showFood(){
-        System.out.println("Deposito de comida de la piscifactoria"+ nombre+ "al" + (comidaActual/comidaMaxima)*100 + "% de capacidad" + comidaActual +"/"+ comidaMaxima);     
+        System.out.println("Deposito de comida de la piscifactoria"+ this.nombre+ "al" + (comidaActual/comidaMaxima)*100 + "% de capacidad" + comidaActual +"/"+ comidaMaxima);     
     }
 
     public void showCapacity(){
-        Tanque tnq = new Tanque(nombre, comidaActual);
+        Tanque<? extends Pez> tnq = new Tanque(nombre, comidaActual);
         System.out.println("Tanque " + this.nombre + " de la piscifactoria " + getNombre() + " al " + (tnq.getPeces().size()/tnq.capacidadMax)*100 + "% de capacidad" + tnq.getPeces().size() + "/" + tnq.capacidadMax);
 
     }
@@ -85,8 +89,9 @@ public class Piscifactoria {
          }
     }
 
-    public void upgradeFood() {
-
+    public void upgradeFood(int comidaSumada) {
+        int capacidadMaxActu = comidaMaxima;
+        this.setComidaMaxima(capacidadMaxActu + comidaMaxima);
     }
 
     public String getNombre() {
@@ -126,5 +131,6 @@ public class Piscifactoria {
         this.comidaActual = comidaActual;
     }
     
+
 
 }
