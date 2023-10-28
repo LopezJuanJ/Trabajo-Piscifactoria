@@ -81,9 +81,13 @@ public class Piscifactoria {
 
     }
 
-    public void showFishStatus(String nombreTanque) {
+    public void showFishStatus(int indice) {
+        int contador =0;
         for ( Tanque<? extends Pez> tnq: tanques) {
-        tnq.showFishStatus();
+            if (indice == contador){
+                 tnq.showFishStatus();
+            }
+            contador++;
         }
     }
 
@@ -110,9 +114,7 @@ public class Piscifactoria {
 
     public void sellFish() {
          for ( Tanque<? extends Pez> tanque : tanques) {
-            String nombreTanque = tanque.getNombre();
-          Tanque<? extends Pez> tnq = new Tanque<Pez>(nombreTanque , obtenerCapacidadMaximaTanq());
-            for (Pez pez : tnq.getPeces()){
+            for (Pez pez : tanque.getPeces()){
                 if(pez.isVida() == true && pez.verificarMadurez()){
                     PecesDatos datos = pez.getDatos();
                     int precio = datos.getMonedas();

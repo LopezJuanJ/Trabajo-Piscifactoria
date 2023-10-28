@@ -64,8 +64,8 @@ public class Simulador {
     System.out.println("Seleccione una opcion: ");
     System.out.println("--------------------------- Piscifactorías ---------------------------");
     System.out.println("[Peces vivos / Peces totales / Espacio total]");
-    System.out.println("0-Cancelar");
     getDatosPisc();
+    System.out.println("0-Cancelar");
 
   }
 
@@ -83,9 +83,7 @@ public class Simulador {
 
   public int selectPisc(){
     Scanner scanner = new Scanner(System.in);
-
     menuPisc();
-  
     System.out.print("Seleccione una piscifactoría (0-" + (piscifactorias.size()) + "): ");
     int selPisc = scanner.nextInt();
     if(selPisc>0){
@@ -99,12 +97,14 @@ public class Simulador {
   }
 
   public  int  selectTank(){
+    int valor =selectPisc()-1;
     Scanner scanner = new Scanner(System.in);
-    int indice =1;
-    for(Piscifactoria piscifactoria: piscifactorias){
-      System.out.println(indice);
-      piscifactoria.showTankStatus();
+    int indice = 0;
 
+    for(Piscifactoria piscifactoria: piscifactorias){
+      if(indice == valor){
+        piscifactoria.showTankStatus();
+      }      
       indice++;
     }
     System.out.print("Selecciona el indice de un tanque: ");
@@ -112,15 +112,35 @@ public class Simulador {
     return seleccion;
   }
   public void showGeneralStatus(){
- 
+      for (Piscifactoria piscifactoria: piscifactorias){
+        piscifactoria.showStatus();
+        piscifactoria.getComidaActual();
+      }
+      System.out.println(this.dias);
+      Monedero monedero = Monedero.getInstance();
+      System.out.println("Monedas: " + monedero.getMonedas());
+
   }
 
   public void showSpecificStatus(){
-
+    int indice = 0;
+    int valor =selectPisc()-1;
+    for (Piscifactoria piscifactoria: piscifactorias){
+      if (indice == valor){
+        piscifactoria.showTankStatus();
+      }
+      indice++;
+    }
   }
 
   public void showTankStatus(){
-
+    int tanqueMostrar = selectTank()-1;
+    int indice =0;
+    for (Piscifactoria piscifactoria: piscifactorias){
+      if (indice==tanqueMostrar) {
+        piscifactoria.showFishStatus(tanqueMostrar);
+      }
+    }
   }
 
   public void showStats(){
