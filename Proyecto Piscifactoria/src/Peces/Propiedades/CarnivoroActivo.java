@@ -14,7 +14,11 @@ public class CarnivoroActivo extends Pez{
         super(sexo, datos);
         //TODO Auto-generated constructor stub
     }
-
+ /**
+     * Implementacion para que un pez Activo y Carnivoro coma.
+     * @param tanque El tanque en el que se encuentra el pez.
+     * @param piscifactoria La piscifactoria a la que pertenece el tanque.
+     */
     @Override
     public void comer(Tanque tanque, Piscifactoria piscifactoria) {
         Random random = new Random();

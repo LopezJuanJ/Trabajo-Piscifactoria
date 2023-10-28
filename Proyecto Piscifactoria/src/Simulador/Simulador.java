@@ -17,6 +17,7 @@ public class Simulador {
   public String nombrePiscifactoria;
   private ArrayList<Piscifactoria> piscifactorias = new ArrayList<Piscifactoria>();
   public ArrayList<Tanque<? extends Pez>> tanques;
+  public ArrayList<Pez> peces = new ArrayList<Pez>();
 
   // public String[] nombrePeces= {propiedades.AlmacenPropiedades.CARPIN_TRES_ESPINAS.getNombre(), propiedades.AlmacenPropiedades.KOI.getNombre(), propiedades.AlmacenPropiedades.CARPA.getNombre(), propiedades.AlmacenPropiedades.SALMON_CHINOOK.getNombre(), propiedades.AlmacenPropiedades.PEJERREY.getNombre(), propiedades.AlmacenPropiedades.COBIA.getNombre(), propiedades.AlmacenPropiedades.CABALLA.getNombre(), propiedades.AlmacenPropiedades.BESUGO.getNombre(), propiedades.AlmacenPropiedades.SARGO.getNombre(), propiedades.AlmacenPropiedades.LUBINA_RAYADA.getNombre(), propiedades.AlmacenPropiedades.DORADA.getNombre(), propiedades.AlmacenPropiedades.SALMON_ATLANTICO.getNombre() };
   
@@ -25,7 +26,9 @@ public class Simulador {
     Simulador simulador = new Simulador();
     simulador.init();
   }
-  
+    /**
+     * Inicializa el simulador y permite al usuario ingresar el nombre de la empresa y la primera piscifactoría.
+     */
     public void init(){
       Scanner scanner = new Scanner(System.in);
 
@@ -40,6 +43,9 @@ public class Simulador {
       piscifactorias.add(inicial);
     }
 
+    /**
+     *Opciones del usuario.
+     */
   public void menu(){
     System.out.println("=========Menu=========");
     System.out.println("1. Estado general");
@@ -59,7 +65,9 @@ public class Simulador {
   }
 
 
-
+     /**
+     * Muestra un menú para seleccionar una piscifactoría.
+     */
   public void menuPisc(){
     System.out.println("Seleccione una opcion: ");
     System.out.println("--------------------------- Piscifactorías ---------------------------");
@@ -69,6 +77,9 @@ public class Simulador {
 
   }
 
+    /**
+     * Obtiene los datos de las piscifactorías y los muestra en el menú.
+     */
   public void getDatosPisc(){
     int indice = 1;
     for (Piscifactoria piscifactoria : piscifactorias){
@@ -79,7 +90,11 @@ public class Simulador {
 
   }
 
-  
+    /**
+     * Permite al usuario seleccionar una piscifactoría.
+     *
+     * @return El índice de la piscifactoría seleccionada.
+     */
 
   public int selectPisc(){
     Scanner scanner = new Scanner(System.in);
@@ -91,11 +106,12 @@ public class Simulador {
     }else {
      return 0;
     }
-
-
-
   }
-
+    /**
+     * Permite al usuario seleccionar un tanque de una piscifactoría.
+     *
+     * @return El índice del tanque seleccionado.
+     */
   public  int  selectTank(){
     int valor =selectPisc()-1;
     Scanner scanner = new Scanner(System.in);
@@ -111,6 +127,10 @@ public class Simulador {
     int seleccion = scanner.nextInt();
     return seleccion;
   }
+
+    /**
+     * Muestra el estado general de las piscifactorías, incluyendo sus nombres, estadísticas y monedas.
+     */
   public void showGeneralStatus(){
       for (Piscifactoria piscifactoria: piscifactorias){
         piscifactoria.showStatus();
@@ -119,9 +139,10 @@ public class Simulador {
       System.out.println(this.dias);
       Monedero monedero = Monedero.getInstance();
       System.out.println("Monedas: " + monedero.getMonedas());
-
   }
-
+    /**
+     * Muestra el estado específico de una piscifactoría seleccionada.
+     */
   public void showSpecificStatus(){
     int indice = 0;
     int valor =selectPisc()-1;
@@ -133,15 +154,18 @@ public class Simulador {
     }
   }
 
-  public void showTankStatus(){
-    int tanqueMostrar = selectTank()-1;
-    int indice =0;
-    for (Piscifactoria piscifactoria: piscifactorias){
-      if (indice==tanqueMostrar) {
-        piscifactoria.showFishStatus(tanqueMostrar);
+    /**
+     * Muestra el estado de los tanques de una piscifactoría seleccionada.
+     */
+    public void showTankStatus() {
+      int tanqueMostrar = selectTank() - 1;
+      int indice = 0;
+      for (Piscifactoria piscifactoria : piscifactorias) {
+        if (indice == tanqueMostrar) {
+          piscifactoria.showFishStatus(tanqueMostrar);
+        }
       }
     }
-  }
 
   public void showStats(){
       
@@ -158,26 +182,84 @@ public class Simulador {
   public void addFish(){
     
   }
-  public void sell(){
-    
-  }
-  public void cleanTank(){
-    
-  }
-  public void emptyTank(){
-    
-  }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-  public void upgrade(){
-    
+ /**
+   * Vende peces maduros en todas las piscifactorías.
+   */
+  public void sell() {
+    int pezVendido =0;
+    for (Piscifactoria piscifactoria : piscifactorias) {
+      for (Tanque tanque : tanques) {
+        for (Pez pez : peces) {
+          if (pez.verificarMadurez()) {
+            piscifactoria.sellFish();
+            pezVendido ++;
+            System.out.println("Piscifactoria" + piscifactoria.getNombre()+":");
+          }
+        }
+
+      }
+    }
   }
   
+  /**
+   * Limpia los tanques de la piscifactoría seleccionada eliminando los peces muertos.
+   */
+  public void cleanTank() {
+    int indice = 0;
+    int valor = selectPisc() - 1;
+
+    for (Piscifactoria piscifactoria : piscifactorias) {
+      if (indice == valor) {
+        for (Tanque tanque : tanques) {
+          for (Pez pez : peces)
+            if (pez.isVida() == false) {
+              tanque.limpiarPeces();
+            }
+        }
+      }
+       indice++;
+    }
+  }
+
+  /**
+   * Vacía los tanques de la piscifactoría seleccionada eliminando todos los peces.
+   */
+    
+  public void emptyTank() {
+    int indice = 0;
+    int valor = selectPisc() - 1;
+
+    for (Piscifactoria piscifactoria : piscifactorias) {
+      if (indice == valor) {
+        for (Tanque tanque : tanques) {
+          for (Pez pez : peces)
+            tanque.limpiarPeces();
+        }
+      }
+      indice++;
+    }
+  }
+
+  public void upgrade() {
+
+  }
+
+  /**
+   * Obtiene el nombre de la piscifactoría.
+   *
+   * @return El nombre de la piscifactoría.
+   */
   public String getNombrePiscifactoria() {
     return nombrePiscifactoria;
   }
 
+  /**
+   * Establece el nombre de la piscifactoría.
+   *
+   * @param nombrePiscifactoria El nuevo nombre de la piscifactoría.
+   */
   public void setNombrePiscifactoria(String nombrePiscifactoria) {
     this.nombrePiscifactoria = nombrePiscifactoria;
   }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 }
