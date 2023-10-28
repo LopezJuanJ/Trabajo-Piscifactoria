@@ -5,18 +5,25 @@ import java.util.ArrayList;
 import Peces.IRio;
 import Peces.Pez;
 import Piscifactoria.Piscifactoria;
+import propiedades.PecesDatos;
 
 public class Tanque<T extends Pez> {
     public ArrayList<T> peces;
 
     public int capacidadMax;
     public String nombre;
+    public  String tipo;
 
     public Tanque(String nombre, int capacidadMax) {
+
         this.peces = new ArrayList<>();
         this.nombre = nombre;
         this.capacidadMax = capacidadMax;
 
+    }
+
+    public String getTipoPezTank(){
+        return  peces.get(0).getDatos().getNombre();
     }
 
     public ArrayList<T> getPeces() {
@@ -72,15 +79,16 @@ public class Tanque<T extends Pez> {
         }
     }
     
-    public void showCapacity(){
-        Piscifactoria psc = new Piscifactoria(nombre);
-        System.out.println("Tanque " + this.nombre + " de la piscifactoria " + psc.getNombre() + " al " + (getPeces().size()/capacidadMax)*100 + "% de capacidad" + getPeces().size() + "/" + capacidadMax );
+    public void showCapacity(String nombrePisc){
+        System.out.println("Tanque " + this.nombre + " de la piscifactoria " + nombrePisc + " al " + (this.getPeces().size()/this.capacidadMax)*100 + "% de capacidad" + this.getPeces().size() + "/" + this.capacidadMax );
     }
 
-    public int getCantPecesTotal() {
+    public int getCantPecesVivos() {
         int contador = 0;
         for (T pez : peces) {
-            contador++;
+            if(pez.isVida()){
+                contador++;
+            }
         }
         return contador;
     }

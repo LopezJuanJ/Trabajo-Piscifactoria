@@ -2,18 +2,18 @@ package Simulador;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Peces.Besugo;
+import Monedero.Monedero;
 import Peces.Pez;
+import Piscifactoria.PiscRio;
 import Piscifactoria.Piscifactoria;
 import Tanque.Tanque;
-import estadisticas.Estadisticas;
 
 public class Simulador {
   //public Estadisticas estadisticas = new Estadisticas( );
 
   public int dias;
   public int numeroPiscifactorias;
-  public String nombreEpresa;
+  public String nombreEmpresa;
   public String nombrePiscifactoria;
   private ArrayList<Piscifactoria> piscifactorias = new ArrayList<Piscifactoria>();
   public ArrayList<Tanque<? extends Pez>> tanques;
@@ -22,20 +22,22 @@ public class Simulador {
   
   public static void main(String[] args) {
     
-    // Besugo besugo = new Besugo(true);
-    // besugo.showStatus();
-    Tanque<? extends Pez> tnq = new Tanque<Pez>("Tanqueta", 25);
-    int i = tnq.getPeces().size();
-    System.out.println(i);
+    Simulador simulador = new Simulador();
+    simulador.init();
   }
   
     public void init(){
       Scanner scanner = new Scanner(System.in);
-      System.out.println("Escribe el nombre de la empresa: ");
-      this.nombreEpresa = scanner.nextLine();
 
-      System.out.println("Por favor, ingrese el nombre de la piscifactoría:");
+      Monedero monedero = Monedero.getInstance();
+      System.out.print("Escribe el nombre de la entidad/empresa/partida: ");
+      this.nombreEmpresa = scanner.nextLine();
+
+      System.out.print("Por favor, ingrese el nombre de la piscifactoría:");
       String nombrePiscifactoria = scanner.nextLine();
+
+      PiscRio inicial = new PiscRio(nombrePiscifactoria);
+      piscifactorias.add(inicial);
     }
 
   public void menu(){
@@ -59,85 +61,56 @@ public class Simulador {
 
 
   public void menuPisc(){
-    Scanner scanner = new Scanner(System.in);
-    int opcion = scanner.nextInt();
-       switch (opcion) {
-              case 1:
+    System.out.println("Seleccione una opcion: ");
+    System.out.println("--------------------------- Piscifactorías ---------------------------");
+    System.out.println("[Peces vivos / Peces totales / Espacio total]");
+    System.out.println("0-Cancelar");
+    getDatosPisc();
 
-                  break;
-              case 2:
+  }
 
-                  break;
-              case 3:
+  public void getDatosPisc(){
+    int indice = 1;
+    for (Piscifactoria piscifactoria : piscifactorias){
+      System.out.println(indice + ".- " + piscifactoria.getNombre() + "[" + piscifactoria.getVivosTotales() + "/"+ piscifactoria.getPecesTotales()+"/"+ piscifactoria.getEspacioTotal());
+      indice++;
 
-                  break;
-              case 4:
+    }
 
-                  break;
-              case 5:
-
-                  break;
-              case 6:
-
-                  break;
-              case 7:
-
-                  break;
-              case 8:
-
-                  break;
-              case 9:
-
-                  break;
-              case 10:
-
-                  break;
-              case 11:
-
-                  break;
-              case 12:
-
-                  break;
-              case 13:
-
-                  break;
-          }
-     
-
-}
+  }
 
   
 
-  public void selectPisc(){
+  public int selectPisc(){
     Scanner scanner = new Scanner(System.in);
-    int indice = 0; 
-    System.out.println("Menú de Piscifactorías:");
-    for (Piscifactoria piscifactoria : piscifactorias) {
-      System.out.println(indice + ". " + piscifactoria.getNombre());
+
+    menuPisc();
+  
+    System.out.print("Seleccione una piscifactoría (0-" + (piscifactorias.size()) + "): ");
+    int selPisc = scanner.nextInt();
+    if(selPisc>0){
+      return selPisc;
+    }else {
+     return 0;
+    }
+
+
+
+  }
+
+  public  int  selectTank(){
+    Scanner scanner = new Scanner(System.in);
+    int indice =1;
+    for(Piscifactoria piscifactoria: piscifactorias){
+      System.out.println(indice);
+      piscifactoria.showTankStatus();
+
       indice++;
     }
-  
-    System.out.print("Seleccione una piscifactoría (1-" + (piscifactorias.size()) + "): ");
-    int selPisc = scanner.nextInt();
-    
-    if (selPisc >= 1 && selPisc <= piscifactorias.size()) {
-        return;
-    }
+    System.out.print("Selecciona el indice de un tanque: ");
+    int seleccion = scanner.nextInt();
+    return seleccion;
   }
-
-  public void selectTank(){
-     Scanner scanner = new Scanner(System.in);
-    int indiceTnq = 0; 
-    System.out.println("Menú de Tanques");
-
-    for (Tanque<? extends Pez> tnq : tanques) {
-      System.out.println(indiceTnq + ". " + tnq.getNombre()); 
-      indiceTnq++;
-    }
-     System.out.print("Seleccione un Tanque (1-" + (piscifactorias.size()) + "): ");
-    int selTank = scanner.nextInt();
-  }
-
   public void showGeneralStatus(){
  
   }

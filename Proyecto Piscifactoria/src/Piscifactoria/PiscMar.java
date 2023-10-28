@@ -3,7 +3,9 @@ public class PiscMar extends Piscifactoria {
 
     public PiscMar(String nombre) {
         super(nombre);
-        //TODO Auto-generated constructor stub
+        comidaActual = 100;
+        comidaMaxima=100;
+        capacidadMaxima=100;
     }
     
 }

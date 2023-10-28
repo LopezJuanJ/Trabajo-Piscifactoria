@@ -13,7 +13,7 @@ public class Piscifactoria {
     protected int comidaActual;
     protected int comidaMaxima;
    
-    protected int espacioMaximo;
+    protected int capacidadMaxima;
     protected String nombre;
     protected Simulador simulador;
     protected String tipo;
@@ -21,16 +21,28 @@ public class Piscifactoria {
     
     public Piscifactoria(String nombre) {
         this.nombre = nombre;
+        this.tanques = new ArrayList<Tanque<? extends Pez>>() ;
+        this.comidaMaxima = obtenerComidaMaximaTanq();
+        this.capacidadMaxima = obtenerCapacidadMaximaTanq();
     }
+
+
     public int getComidaMaxima() {
         return comidaMaxima;
     }
 
-
+    public int getCantTanques(){
+        int contador = 0;
+        for (Tanque<? extends Pez> tanque : tanques){
+            contador++;
+        }
+        return contador;
+    }
+    
    
     public void showStatus() {
-        System.out.println("===============" + simulador.getNombrePiscifactoria() + "===============");
-        System.out.println("Tanques: ");
+        System.out.println("===============" + this.nombre + "===============");
+        System.out.println("Tanques: " + getCantTanques());
         System.out.println("Ocupación: peces / max (x%)");
         System.out.println("Peces vivos: vivos / total (x%)");
         System.out.println("Peces alimentados: alimentados / vivos (x%)");
@@ -39,19 +51,40 @@ public class Piscifactoria {
         System.out.println("Almacén de comida: actual / max (x%)");
     }
 
-    public void showTankStatus() {
-        for ( Tanque<? extends Pez> tanque : tanques) {
+    public int getEspacioTotal(){
+        int espacio = getCantTanques()*obtenerCapacidadMaximaTanq();
+        return espacio;
+    }
 
-            String nombreTanque = tanque.getNombre();
-            Tanque<? extends Pez> tnq = new Tanque<Pez>(nombreTanque, obtenerCapacidadMaximaPis());
+    public  int getPecesTotales(){
+        int total=0;
+        for (Tanque tanque : tanques){
+            total+=tanque.getPeces().size();
+        }
+        return total;
+    }
+
+    public int getVivosTotales(){
+        int vivos =0;
+        for (Tanque tanque: tanques){
+            vivos+=tanque.getPecesVivos();
+        }
+        return vivos;
+    }
+    public void showTankStatus() {
+        for ( Tanque<? extends Pez> tnq: tanques) {
+
+            String nombreTanque = tnq.getNombre();
             tnq.showStatus();
+            System.out.println(tnq.getTipoPezTank());
         }
 
     }
 
     public void showFishStatus(String nombreTanque) {
-        Tanque<? extends Pez> tnq = new Tanque<Pez>(nombreTanque , obtenerCapacidadMaximaPis());
+        for ( Tanque<? extends Pez> tnq: tanques) {
         tnq.showFishStatus();
+        }
     }
 
     public void showFood(){
@@ -59,9 +92,9 @@ public class Piscifactoria {
     }
 
     public void showCapacity(){
-        Tanque<? extends Pez> tnq = new Tanque(nombre, comidaActual);
-        System.out.println("Tanque " + this.nombre + " de la piscifactoria " + getNombre() + " al " + (tnq.getPeces().size()/tnq.capacidadMax)*100 + "% de capacidad" + tnq.getPeces().size() + "/" + tnq.capacidadMax);
-
+        for (Tanque tanque : tanques){
+            tanque.showCapacity(this.nombre);
+        }
     }
 
     public void nextDay() {
@@ -74,10 +107,11 @@ public class Piscifactoria {
         }
     }
 
+
     public void sellFish() {
          for ( Tanque<? extends Pez> tanque : tanques) {
             String nombreTanque = tanque.getNombre();
-          Tanque<? extends Pez> tnq = new Tanque<Pez>(nombreTanque , obtenerCapacidadMaximaPis());
+          Tanque<? extends Pez> tnq = new Tanque<Pez>(nombreTanque , obtenerCapacidadMaximaTanq());
             for (Pez pez : tnq.getPeces()){
                 if(pez.isVida() == true && pez.verificarMadurez()){
                     PecesDatos datos = pez.getDatos();
@@ -102,7 +136,7 @@ public class Piscifactoria {
         this.nombre = nombre;
     }
 
-    public int obtenerComidaMaximaPis() {
+    public int obtenerComidaMaximaTanq() {
         if (this instanceof IRio) {
             return 25;
         } else {
@@ -110,7 +144,7 @@ public class Piscifactoria {
         }
     }
 
-    public int obtenerCapacidadMaximaPis() {
+    public int obtenerCapacidadMaximaTanq() {
         if (this instanceof IRio) {
             return 25;
         } else {
