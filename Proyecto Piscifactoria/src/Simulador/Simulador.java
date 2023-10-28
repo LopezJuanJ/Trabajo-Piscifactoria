@@ -144,7 +144,7 @@ public class Simulador {
   }
 
   public void showStats(){
-
+      
   }
   public void showIctio(){
     
