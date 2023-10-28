@@ -117,9 +117,33 @@ public class Piscifactoria {
      * Realiza una mejora en la cantidad de comida disponible en la piscifactoria.
      * @param comidaSumada La cantidad de comida a añadir al depósito.
      */
-    public void upgradeFood(int comidaSumada) {
-        int capacidadMaxActu = comidaMaxima;
-        this.setComidaMaxima(capacidadMaxActu + comidaMaxima);
+    public void upgradeFood() {
+        Monedero monedas = Monedero.getInstance();
+        int cantAument = 0;
+       if (this instanceof IRio) {
+            if(!(this.comidaMaxima==250)){
+                if(monedas.getMonedas()>=100){
+                    monedas.comprar(100);
+                    setComidaMaxima(25+this.comidaMaxima);
+                    cantAument = 25;
+                    System.out.println("Almacen de la comida de la piscifactoria "+ this.nombre + " mejorado. Su cacidad en " + cantAument + " hasta un total de " + this.capacidadMaxima); 
+                } else{
+                    System.out.println("Dinero Insuficiente");
+                }
+            }
+        } else {
+            if(!(this.comidaMaxima==1000)){
+                if(monedas.getMonedas()>=200){
+                    monedas.comprar(200);                    
+                    setComidaMaxima(100+this.comidaMaxima);
+                    cantAument = 100;
+                    System.out.println("Almacen de la comida de la piscifactoria "+ this.nombre + " mejorado. Su cacidad en " + cantAument + " hasta un total de " + this.capacidadMaxima); 
+                } else{
+                    System.out.println("Dinero Insuficiente");
+                }
+            }
+        }
+
     }
      /**
      * Obtiene el nombre de la piscifactoria.

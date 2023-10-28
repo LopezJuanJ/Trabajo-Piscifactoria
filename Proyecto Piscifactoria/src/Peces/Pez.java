@@ -17,7 +17,11 @@ public abstract class Pez {
     protected boolean alimentado;
     protected PecesDatos datos;
     protected int ciclo;
-    // Método abstracto para que los subclases implementen la lógica de alimentación.
+    
+    /** Método abstracto para que los subclases implementen la lógica de alimentación.
+     * @param tanque
+     * @param piscifactoria
+     */
     public abstract void comer(Tanque<? extends Pez> tanque, Piscifactoria piscifactoria);
     
     /**

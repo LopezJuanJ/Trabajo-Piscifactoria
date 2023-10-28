@@ -1,12 +1,24 @@
 package Almacen;
-public class Almacen {
+
+
+public class AlmacenCentral {
     protected int comida;
-    
+    private static AlmacenCentral instance;
 
-    public Almacen(int comida) {
-        this.comida = comida;
+
+    public AlmacenCentral() {
+        this.comida = 200;
     }
-
+/**
+     * Obtiene la instancia del monedero.
+     * @return la instancia del monedero
+     */
+    public static AlmacenCentral getInstance() {
+        if (instance == null) {
+            instance = new AlmacenCentral();
+        }
+        return instance;
+    }
     /**
      * Resta la comida indicada en la cantidad.
      * @param cantidad cantidad a restar en la comida.
@@ -29,6 +41,7 @@ public class Almacen {
     }
 
 
+
     /**
      * Establece la cantidad de comida.
      * @param comida la cantidad de comida en el almacén.
@@ -36,4 +49,5 @@ public class Almacen {
     public void setComida(int comida) {
         this.comida = comida;
     }
+
 }
