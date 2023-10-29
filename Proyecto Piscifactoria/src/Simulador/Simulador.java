@@ -103,7 +103,7 @@ public class Simulador {
                   this.showIctio();
                   break;
               case 6:
-
+                  this.nextDay();
                   break;
               case 7:
                   this.AddComidaFin();
