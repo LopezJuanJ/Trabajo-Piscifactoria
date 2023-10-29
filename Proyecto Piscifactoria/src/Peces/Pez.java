@@ -2,6 +2,7 @@ package Peces;
 
 import java.util.Random;
 
+import Almacen.AlmacenCentral;
 import Piscifactoria.Piscifactoria;
 import Tanque.Tanque;
 import propiedades.PecesDatos;
@@ -105,6 +106,7 @@ public abstract class Pez {
     public void grow(Tanque<? extends Pez> tanque, Piscifactoria piscifactoria ) {
         Random random = new Random();
         if(this.vida = true){
+            AlmacenCentral almacenCentral = AlmacenCentral.getInstance();
             comer(tanque, piscifactoria);            
             if(!this.alimentado && !random.nextBoolean()){
                 this.vida = false;

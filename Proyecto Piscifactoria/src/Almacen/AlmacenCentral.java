@@ -10,14 +10,15 @@ public class AlmacenCentral {
         this.comida = 200;
     }
 /**
-     * Obtiene la instancia del monedero.
-     * @return la instancia del monedero
+     * Obtiene la instancia del Almacen central.
+     * @return la intancia del Almacen central , devolvera null si no esta creado
      */
     public static AlmacenCentral getInstance() {
-        if (instance == null) {
-            instance = new AlmacenCentral();
-        }
-        return instance;
+        // if (instance == null) {
+        //     instance = new AlmacenCentral();
+        // }
+        return instance;   
+
     }
     /**
      * Resta la comida indicada en la cantidad.

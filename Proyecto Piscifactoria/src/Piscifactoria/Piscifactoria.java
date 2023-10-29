@@ -90,10 +90,8 @@ public class Piscifactoria {
      */
     public void nextDay() {
         for (Tanque<? extends Pez> tanque : tanques) {
+            
             tanque.nextDay(tanque, this);
-            if (comidaActual !=0){
-                
-            }
             
         }
     }

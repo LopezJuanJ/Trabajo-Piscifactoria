@@ -52,6 +52,7 @@ public class Tanque<T extends Pez> {
         }
 
     }
+    
     /**
      * Simula el avance de un día en el tanque, actualizando el estado de los peces.
      * @param tanque El tanque actual.
