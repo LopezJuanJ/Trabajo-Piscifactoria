@@ -236,12 +236,10 @@ public class Simulador {
   public void showSpecificStatus() {
     int indice = 0;
     int valor = selectPisc() - 1;
-    for (Piscifactoria piscifactoria : piscifactorias) {
-      if (indice == valor) {
-        piscifactoria.showTankStatus();
-      }
-      indice++;
+    if(valor<1 || valor>piscifactorias.size()){
+      piscifactorias.get(valor).showTankStatus();
     }
+
   }
 
   /**

@@ -28,24 +28,27 @@ public class Tanque<T extends Pez> {
 
     }
 
+    public double porcentaje(int numero1, int numero2){
+        if (numero2 == 0) {
+            return 0.0;
+        }
+        double porcentaje = (double) numero1 / numero2 * 100;
+        porcentaje = Math.round(porcentaje * 10) / 10.0;
+        return porcentaje;
+    }
+
     /**
      * Muestra todos los datos del Tanque.
      */
-
     public void showStatus() {
         System.out.println("=============== Tanque " + this.nombre + "===============");
-            if (this.getPeces().size()==0){
-                System.out.println("No hay peces en el tanque");
-            } else {
+
                 System.out.println("Ocupacion: " + this.getPeces().size() + "/" + capacidadMax + "("+ (this.getPeces().size() / capacidadMax) * 100 + "%)");
-                System.out.println("Peces vivos" + this.getPecesVivos() + "/" + this.getPeces().size() + "("+ (this.getPecesVivos() / this.getPeces().size()) * 100 + "%)");
-                System.out.println("Peces alimentados: " + this.getPecesAlimentados() + "/" + this.getPecesVivos() + "("+ (this.getPecesAlimentados() / this.getPecesVivos()) * 100 + "%)");
-                System.out.println("Peces adultos: " + this.getPecesMaduros() + "/" + this.getPecesVivos() + "("+ (this.getPecesMaduros() / this.getPecesVivos() * 100) + "%)");
+                System.out.println("Peces vivos: " + this.getPecesVivos() + "/" + this.getPeces().size() + "("+ porcentaje(this.getCantPecesVivos(),this.getPeces().size()) + "%)");
+                System.out.println("Peces alimentados: " + this.getPecesAlimentados() + "/" + this.getPecesVivos() + "("+ porcentaje(this.getPecesAlimentados(), this.getPecesVivos()) + "%)");
+                System.out.println("Peces adultos: " + this.getPecesMaduros() + "/" + this.getPecesVivos() + "("+ porcentaje(this.getPecesMaduros(), this.getPecesVivos()) + "%)");
                 System.out.println("Hembras/Machos: " + this.getMachos() + "/" + this.getHembras());
-                System.out.println("Fertiles: " + this.getPecesFertiles() + "/" + this.getPecesVivos() + "("+ (this.getPecesFertiles() / this.getPecesVivos() * 100) + "%)");
-            }
-            
-      
+                System.out.println("Fertiles: " + this.getPecesFertiles() + "/" + this.getPecesVivos() + "("+ porcentaje(this.getPecesFertiles(),this.getPecesVivos()) + "%)");
     }
 
     /**
@@ -119,6 +122,9 @@ public class Tanque<T extends Pez> {
      * @return El tipo de pez alojado en el tanque.
      */
       public String getTipoPezTank(){
+            if(peces.isEmpty()){
+                return "NO hay peces en el tanque";
+            }
         return  peces.get(0).getDatos().getNombre();
     }
     /**

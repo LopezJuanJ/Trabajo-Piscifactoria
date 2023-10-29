@@ -51,7 +51,7 @@ public class Piscifactoria {
 
             String nombreTanque = tnq.getNombre();
             tnq.showStatus();
-            System.out.println(tnq.getTipoPezTank());
+            System.out.println("Tipo: " + tnq.getTipoPezTank());
         }
 
     }
