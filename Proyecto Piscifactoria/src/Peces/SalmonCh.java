@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class SalmonCh extends Carnivoro implements IRio {
 
-   public SalmonCh(boolean sexo, PecesDatos datos) {
-      super(sexo, AlmacenPropiedades.BESUGO);
+   public SalmonCh() {
+      super(AlmacenPropiedades.BESUGO);
       //TODO Auto-generated constructor stub
    }
 

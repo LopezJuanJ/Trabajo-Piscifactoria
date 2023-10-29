@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class LucioNor extends CarnivoroActivo implements IRio{
 
-   public LucioNor(boolean sexo) {
-      super(sexo, AlmacenPropiedades.LUCIO_NORTE);
+   public LucioNor() {
+      super(AlmacenPropiedades.LUCIO_NORTE);
 
       //TODO Auto-generated constructor stub
    }

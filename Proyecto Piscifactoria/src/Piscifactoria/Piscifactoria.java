@@ -7,7 +7,9 @@ import Monedero.Monedero;
 import Peces.IRio;
 import Peces.Pez;
 import Simulador.Simulador;
+import Stats.Stats;
 import Tanque.Tanque;
+import estadisticas.Estadisticas;
 import propiedades.PecesDatos;
 
 public class Piscifactoria {
@@ -49,9 +51,9 @@ public class Piscifactoria {
         System.out.println("Ocupación: " + this.getPecesTotales() +"/"+this.getEspacioTotal()+ " (" +porcentaje(this.getPecesTotales(),this.getEspacioTotal()) + "%)");
         System.out.println("Peces vivos: " + this.getVivosTotales()+"/"+getPecesTotales() + " (" + porcentaje(this.getVivosTotales(),getPecesTotales()) +"%)");
         System.out.println("Peces alimentados:" + this.getPecesAlimentadossTotales()+"/"+this.getVivosTotales() + " (" + porcentaje(this.getPecesAlimentadossTotales(),this.getVivosTotales())+"%)");
-        System.out.println("Hembras / Machos: H/M");
+        System.out.println("Hembras / Machos: " );
         System.out.println("Fértiles: fértiles / vivos");
-        System.out.println("Almacén de comida: actual / max (x%)");
+        System.out.println("Almacén de comida: " + this.getComidaActual()+ "/" + this.getComidaMaxima());
     }
 
     /**
@@ -129,10 +131,12 @@ public class Piscifactoria {
                     PecesDatos datos = pez.getDatos();
                     int precio = datos.getMonedas();
                     Monedero.getInstance().vender(precio);
+                    Stats.getStats().registrarVenta(pez.getDatos().getNombre(), pez.getDatos().getMonedas());
+                }
+            }
+             tanque.limpiarPeces();
 
-                }
-                }
-            tanque.limpiarPeces();
+
          }
     }
      /**
@@ -176,7 +180,28 @@ public class Piscifactoria {
             System.out.println("El tanque tiene peces, no puede ser eliminado.");
         }
     }
+        public Tanque<? extends Pez> buscarTanq(Pez p) {
+            ArrayList<Tanque<? extends Pez>> compatibles = new ArrayList<>();
+            for (Tanque<? extends Pez> tanque : tanques) {
+                if (tanque.compararTipo(p)) {
+                    compatibles.add(tanque);
+                }
+            }
+            return compatibles.get(0);
+        }
 
+    public void anadirPez(Pez pez) {
+        Tanque tanqueOptimo = buscarTanq(pez);
+        if (tanqueOptimo == null) {
+            System.out.println("No tienes un tanque disponible!");
+            return;
+        }
+        tanqueOptimo.addFish(pez);
+
+        System.out.println("Se ha comprado: " + pez.getDatos().getNombre());
+        int precio = pez.getDatos().getCoste();
+        Monedero.getInstance().comprar(precio);
+    }
 
      /**
      * Obtiene el nombre de la piscifactoria.
@@ -202,6 +227,9 @@ public class Piscifactoria {
         } else {
             return 100;
         }
+    }
+    public void buscarTanqueOptimo(){
+
     }
     /**
      * Obtiene la canpacidad máxima de comida de un tanque, dependiendo del tipo de piscifactoria.
@@ -253,7 +281,7 @@ public class Piscifactoria {
      */
     public int getCantTanques(){
         int contador = 0;
-        for (Tanque<? extends Pez> tanque : tanques){
+        for (Tanque<? extends Pez> tanque : this.tanques){
             contador++;
         }
         return contador;
@@ -263,7 +291,7 @@ public class Piscifactoria {
      * @return espacio total.
      */
      public int getEspacioTotal(){
-        int espacio = getCantTanques()*obtenerCapacidadMaximaTanq();
+        int espacio = this.getCantTanques()*this.obtenerCapacidadMaximaTanq();
         return espacio;
     }
     /**

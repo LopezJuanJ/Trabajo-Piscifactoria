@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class Pejerrey extends Carnivoro implements IRio {
 
-    public Pejerrey(boolean sexo) {
-        super(sexo, AlmacenPropiedades.PEJERREY);
+    public Pejerrey() {
+        super(AlmacenPropiedades.PEJERREY);
 
         //TODO Auto-generated constructor stub
     }

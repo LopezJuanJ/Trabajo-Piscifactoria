@@ -13,6 +13,11 @@ public class Voraz extends Pez {
         //TODO Auto-generated constructor stub
     }
 
+    public Voraz(PecesDatos datos) {
+        super(false, datos);
+        //TODO Auto-generated constructor stub
+    }
+
     protected boolean alimentado;
 
      /**

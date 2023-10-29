@@ -8,8 +8,8 @@ import propiedades.PecesProps;
 
 public class Corvina extends CarnivoroVoraz  implements IRio{
 
-    public Corvina(boolean sexo) {
-        super(sexo, AlmacenPropiedades.CORVINA);
+    public Corvina() {
+        super(AlmacenPropiedades.CORVINA);
 
     }
 

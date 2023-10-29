@@ -12,6 +12,10 @@ public class Carnivoro extends Pez{
         super(sexo, datos);
         //TODO Auto-generated constructor stub
     }
+    public Carnivoro(PecesDatos datos) {
+        super(false, datos);
+        //TODO Auto-generated constructor stub
+    }
 
     protected boolean alimentado;
 

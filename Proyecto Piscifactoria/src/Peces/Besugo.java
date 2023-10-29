@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class Besugo extends Carnivoro implements IMar {
 
-  public Besugo(boolean sexo) {
-    super(sexo, AlmacenPropiedades.BESUGO);
+  public Besugo() {
+    super(AlmacenPropiedades.BESUGO);
   }
 
   public static void showIctio(){

@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class LubinaRa extends Carnivoro implements IMar{
 
-   public LubinaRa(boolean sexo) {
-      super(sexo, AlmacenPropiedades.LUBINA_RAYADA);
+   public LubinaRa() {
+      super(AlmacenPropiedades.LUBINA_RAYADA);
 
       //TODO Auto-generated constructor stub
    }

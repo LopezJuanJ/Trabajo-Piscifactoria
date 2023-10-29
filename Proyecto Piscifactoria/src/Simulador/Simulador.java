@@ -1,31 +1,19 @@
 package Simulador;
 
-import java.lang.management.ThreadInfo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import Almacen.AlmacenCentral;
 import Monedero.Monedero;
-import Peces.Besugo;
-import Peces.Caballa;
-import Peces.Corvina;
-import Peces.LenguadoEu;
-import Peces.LubinaEu;
-import Peces.LubinaRa;
-import Peces.LucioNor;
-import Peces.Pejerrey;
-import Peces.Pez;
-import Peces.Robalo;
-import Peces.SalmonAt;
-import Peces.SalmonCh;
-import Peces.TilapiaNi;
+import Peces.*;
 import Piscifactoria.PiscRio;
 import Piscifactoria.PiscMar;
 
 import Piscifactoria.Piscifactoria;
+import Stats.Stats;
 import Tanque.Tanque;
-import propiedades.PecesDatos;
-import propiedades.PecesProps;
+import estadisticas.Estadisticas;
+import propiedades.AlmacenPropiedades;
 
 public class Simulador {
   // public Estadisticas estadisticas = new Estadisticas( );
@@ -35,6 +23,8 @@ public class Simulador {
   public String nombreEmpresa;
   public  boolean creado=false;
   public String nombrePiscifactoria;
+  private Estadisticas stats = Stats.getStats();
+
   private ArrayList<Piscifactoria> piscifactorias = new ArrayList<Piscifactoria>();
   public ArrayList<Tanque<? extends Pez>> tanques;
   public ArrayList<Pez> peces = new ArrayList<Pez>();
@@ -106,7 +96,7 @@ public class Simulador {
                   this.showTankStatus();
                   break;
               case 4:
-
+                  stats.mostrar();
                   break;
               case 5:
                   this.showIctio();
@@ -118,7 +108,7 @@ public class Simulador {
                   this.AddComidaFin();
                   break;
               case 8:
-
+                  this.addFish();
                   break;
               case 9:
                   this.sell();
@@ -157,6 +147,66 @@ public class Simulador {
     getDatosPisc();
     System.out.println("0-Cancelar");
 
+  }
+  public Pez menuSelPez(Piscifactoria pisc){
+    int sel;
+    if (pisc instanceof IMar){
+      System.out.println("1.Tilapia del Nilo");
+      System.out.println("2.Lucio del norte");
+      System.out.println("3.Corvina");
+      System.out.println("4.Salmon Chinook ");
+      System.out.println("5.Pejerrey");
+    } else {
+      System.out.println("6.Lenguado Europeo");
+      System.out.println("7.Caballa");
+      System.out.println("8.Robalo");
+      System.out.println("10.Lubina Europea");
+      System.out.println("12.Besugo");
+    }
+    System.out.println("9.Lubina Rayada");
+    System.out.println("11. Salmon atlantico");
+
+
+    System.out.print("Selecciona un Pez para comprar: ");
+    sel = newScan.nextInt();
+    switch (sel){
+      case 1:
+        return new TilapiaNi();
+      case 2:
+        return  new LucioNor();
+
+      case 3:
+        return new Corvina();
+
+      case 4:
+        return new SalmonCh();
+
+      case 5:
+        return new Pejerrey();
+
+      case 6:
+        return new LenguadoEu();
+
+      case 7:
+        return new Caballa();
+
+      case 8:
+        return new Robalo();
+      case 9:
+        return new LubinaRa();
+
+      case 10:
+        return new LubinaEu();
+
+      case 11:
+        return new SalmonCh();
+
+      case 12:
+        return new Besugo();
+
+    }
+
+      return null;
   }
 
   /**
@@ -322,7 +372,10 @@ public class Simulador {
   }
 
   public void nextDay() {
+    for (Piscifactoria pisc: piscifactorias){
+      pisc.nextDay();
 
+    }
   }
 
   public void addFood(Piscifactoria piscifactoria) {
@@ -428,15 +481,17 @@ public class Simulador {
     }
   }
   public void addFish() {
-
-
+    int valor = selectPisc() - 1;
+    if(valor<1 || valor>piscifactorias.size()){
+      Piscifactoria pisc = piscifactorias.get(valor);
+      pisc.anadirPez(menuSelPez(pisc));
+    }
   }
 
   /**
    * Vende peces maduros en todas las piscifactorías.
    */
   public void sell() {
-    int pezVendido = 0;
     for (Piscifactoria piscifactoria : piscifactorias) {
         piscifactoria.sellFish();
 
@@ -502,6 +557,7 @@ public class Simulador {
       case 1:
         System.out.println("a. Piscifactoría ");
         System.out.println("b. Almacén central");
+        System.out.print("Selecciona una opcion: ");
          val2 = newScan.nextLine().trim();
 
         switch (val2) {

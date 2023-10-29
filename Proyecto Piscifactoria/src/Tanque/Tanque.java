@@ -12,7 +12,15 @@ public class Tanque<T extends Pez> {
     public int capacidadMax;
     public String nombre;
     public  String tipo;
-    
+
+    public void setCapacidadMax(int capacidadMax) {
+        this.capacidadMax = capacidadMax;
+    }
+
+    public int getCapacidadMax() {
+        return capacidadMax;
+    }
+
     /**
      * Constructor de la clase Tanque.
      * @param nombre El nombre del tanque.
@@ -108,6 +116,19 @@ public class Tanque<T extends Pez> {
             System.out.println("Los peces no se pueden reproducir");
         }
     }
+    public boolean compararTipo(Pez p) {
+        if (this.peces.size()==this.getCapacidadMax()) {
+            return false;
+        }
+        if (peces.isEmpty()) {
+            return true;
+        }
+        return peces.get(0).getClass() == p.getClass();
+    }
+    public void addFish(Pez pez){
+        this.peces.add((T) pez);
+    }
+
      /**
      * Muestra información sobre la capacidad actual del tanque y el porcentaje de ocupación.
      * @param nombrePisc El nombre de la piscifactoria a la que pertenece el tanque.

@@ -12,7 +12,10 @@ public class Activo extends Pez {
         super(sexo, datos);
         // TODO Auto-generated constructor stub
     }
-
+    public Activo(PecesDatos datos) {
+        super(false, datos);
+        // TODO Auto-generated constructor stub
+    }
     protected boolean alimentado;
 
     

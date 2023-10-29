@@ -30,11 +30,26 @@ public abstract class Pez {
      * @param sexo El sexo del pez (true --> macho, false --> hembra).
      * @param datos Los datos del pez en la libreria.
      */
-    public Pez (boolean sexo, PecesDatos datos) {
+    public Pez (boolean sexo,PecesDatos datos) {
         this.edad = 0;
+        this.vida=true;
+
         this.sexo = sexo;
         this.datos = datos;
         
+    }
+
+    /**
+     * Constructor de la clase Pez.
+     *
+     * @param datos Los datos del pez en la libreria.
+     */
+    public Pez (PecesDatos datos) {
+        this.edad = 0;
+        this.sexo = false;
+        this.vida=true;
+        this.datos = datos;
+
     }
      /**
      * Muestra todos los datos del pez.

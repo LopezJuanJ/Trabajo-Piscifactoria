@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class TilapiaNi extends Filtrador implements IRio {
 
-    public TilapiaNi(boolean sexo) {
-        super(sexo, AlmacenPropiedades.TILAPIA_NILO);
+    public TilapiaNi() {
+        super(AlmacenPropiedades.TILAPIA_NILO);
     }
 
     public static void showIctio(){

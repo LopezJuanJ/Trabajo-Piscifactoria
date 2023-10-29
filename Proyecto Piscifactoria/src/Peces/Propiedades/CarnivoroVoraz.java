@@ -15,6 +15,10 @@ public class CarnivoroVoraz extends Pez{
         super(sexo, datos);
         //TODO Auto-generated constructor stub
     }
+    public CarnivoroVoraz(PecesDatos datos) {
+        super(false, datos);
+        //TODO Auto-generated constructor stub
+    }
     /**
      * Implementacion para que un pez Carnivoro y Voraz coma.
      * @param tanque El tanque en el que se encuentra el pez.

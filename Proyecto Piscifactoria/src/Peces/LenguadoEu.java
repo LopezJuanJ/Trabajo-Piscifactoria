@@ -8,8 +8,8 @@ import propiedades.PecesProps;
 
 public class LenguadoEu extends  Carnivoro implements IMar{    
    
-    public LenguadoEu(boolean sexo) {
-        super(sexo, AlmacenPropiedades.LENGUADO_EUROPEO);
+    public LenguadoEu() {
+        super(AlmacenPropiedades.LENGUADO_EUROPEO);
         
     }
      public static void showIctio(){

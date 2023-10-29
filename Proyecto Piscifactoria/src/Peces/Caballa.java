@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class Caballa extends Carnivoro implements IMar {
 
-    public Caballa(boolean sexo) {
-        super(sexo, AlmacenPropiedades.CABALLA);
+    public Caballa() {
+        super(AlmacenPropiedades.CABALLA);
         
     }
 

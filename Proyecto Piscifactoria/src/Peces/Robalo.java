@@ -7,8 +7,8 @@ import propiedades.PecesProps;
 
 public class Robalo extends Carnivoro implements IMar{
 
-    public Robalo(boolean sexo) {
-        super(sexo, AlmacenPropiedades.ROBALO);
+    public Robalo() {
+        super(AlmacenPropiedades.ROBALO);
         //TODO Auto-generated constructor stub
     }
 
