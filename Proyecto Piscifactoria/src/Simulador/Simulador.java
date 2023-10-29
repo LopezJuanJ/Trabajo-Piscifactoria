@@ -1,6 +1,7 @@
 package Simulador;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import Almacen.AlmacenCentral;
@@ -123,11 +124,15 @@ public class Simulador {
                   this.upgrade();
                   break;
               case 13:
-
+                System.out.print("Cuantos dias avance:");
+                int valor = newScan.nextInt();
+                for (int i = 0; i <= valor; i++) {
+                    nextDay();
+                }
                   break;
 
               case 98:
-
+                    addFish98();
                   break;
               case 99:
                 System.out.println("1000 monedas mas");
@@ -160,11 +165,11 @@ public class Simulador {
       System.out.println("6.Lenguado Europeo");
       System.out.println("7.Caballa");
       System.out.println("8.Robalo");
-      System.out.println("10.Lubina Europea");
-      System.out.println("12.Besugo");
+      System.out.println("9.Lubina Europea");
+      System.out.println("10.Besugo");
     }
-    System.out.println("9.Lubina Rayada");
-    System.out.println("11. Salmon atlantico");
+    System.out.println("11.Lubina Rayada");
+    System.out.println("12. Salmon atlantico");
 
 
     System.out.print("Selecciona un Pez para comprar: ");
@@ -193,20 +198,83 @@ public class Simulador {
       case 8:
         return new Robalo();
       case 9:
-        return new LubinaRa();
-
-      case 10:
         return new LubinaEu();
 
+      case 10:
+        return new Besugo();
+
       case 11:
-        return new SalmonCh();
+        return new LubinaRa();
 
       case 12:
-        return new Besugo();
+        return new SalmonAt();
 
     }
 
       return null;
+  }
+  public Pez menuSelPez98(Piscifactoria pisc){
+    Random ran = new Random();
+    int sel;
+    if (pisc instanceof IMar){
+      System.out.println("1.Tilapia del Nilo");
+      System.out.println("2.Lucio del norte");
+      System.out.println("3.Corvina");
+      System.out.println("4.Salmon Chinook ");
+      System.out.println("5.Pejerrey");
+    } else {
+      System.out.println("6.Lenguado Europeo");
+      System.out.println("7.Caballa");
+      System.out.println("8.Robalo");
+      System.out.println("9.Lubina Europea");
+      System.out.println("10.Besugo");
+    }
+    System.out.println("11.Lubina Rayada");
+    System.out.println("12. Salmon atlantico");
+
+    if(pisc instanceof IMar){
+      sel= ran.nextInt(1,5);
+    }else {
+      sel=ran.nextInt(6,7);
+    }
+    switch (sel){
+      case 1:
+        return new TilapiaNi();
+      case 2:
+        return  new LucioNor();
+
+      case 3:
+        return new Corvina();
+
+      case 4:
+        return new SalmonCh();
+
+      case 5:
+        return new Pejerrey();
+
+      case 6:
+        return new LenguadoEu();
+
+      case 7:
+        return new Caballa();
+
+      case 8:
+        return new Robalo();
+      case 9:
+        return new LubinaEu();
+
+      case 10:
+        return new Besugo();
+
+      case 11:
+        return new LubinaRa();
+
+      case 12:
+        return new SalmonAt();
+
+    }
+
+    return null;
   }
 
   /**
@@ -485,6 +553,15 @@ public class Simulador {
     if(valor<1 || valor>piscifactorias.size()){
       Piscifactoria pisc = piscifactorias.get(valor);
       pisc.anadirPez(menuSelPez(pisc));
+    }
+  }
+  public void addFish98() {
+    int valor = selectPisc() - 1;
+    if(valor<1 || valor>piscifactorias.size()){
+      Piscifactoria pisc = piscifactorias.get(valor);
+      for (int i = 0; i < 4; i++) {
+        pisc.anadirPez(menuSelPez(pisc));
+      }
     }
   }
 
