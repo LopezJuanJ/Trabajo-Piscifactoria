@@ -73,74 +73,77 @@ public class Simulador {
    * Opciones del usuario.
    */
   public void menu() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("=========Menu=========");
-    System.out.println("1. Estado general");
-    System.out.println("2. Estado piscifactoria");
-    System.out.println("3. Estado tanques");
-    System.out.println("4. Informes");
-    System.out.println("5. Ictiopedia");
-    System.out.println("6. Pasar dia");
-    System.out.println("7. Comprar comida");
-    System.out.println("8. Comprar peces");
-    System.out.println("9. Vender peces");
-    System.out.println("10. Limpiar tanques");
-    System.out.println("11. Vaciar tanque");
-    System.out.println("12. Mejorar");
-    System.out.println("13. Pasar varios dias");
-    System.out.println("14. Salir");
-    System.out.print("Selecciona una opcion: ");
-    int seleccion = scanner.nextInt();
-    switch (seleccion) {
-      case 1:
-        this.showGeneralStatus();
-        break;
-      case 2:
-        this.showSpecificStatus();
-        break;
-      case 3:
-        this.showTankStatus();
-        break;
-      case 4:
+      int seleccion;
+      do {
+          Scanner scanner = new Scanner(System.in);
+          System.out.println("=========Menu=========");
+          System.out.println("1. Estado general");
+          System.out.println("2. Estado piscifactoria");
+          System.out.println("3. Estado tanques");
+          System.out.println("4. Informes");
+          System.out.println("5. Ictiopedia");
+          System.out.println("6. Pasar dia");
+          System.out.println("7. Comprar comida");
+          System.out.println("8. Comprar peces");
+          System.out.println("9. Vender peces");
+          System.out.println("10. Limpiar tanques");
+          System.out.println("11. Vaciar tanque");
+          System.out.println("12. Mejorar");
+          System.out.println("13. Pasar varios dias");
+          System.out.println("14. Salir");
+          System.out.print("Selecciona una opcion: ");
+          seleccion = newScan.nextInt();
+          switch (seleccion) {
+              case 1:
+                  this.showGeneralStatus();
+                  break;
+              case 2:
+                  this.showSpecificStatus();
+                  break;
+              case 3:
+                  this.showTankStatus();
+                  break;
+              case 4:
 
-        break;
-      case 5:
-        this.showIctio();
-        break;
-      case 6:
+                  break;
+              case 5:
+                  this.showIctio();
+                  break;
+              case 6:
 
-        break;
-      case 7:
+                  break;
+              case 7:
 
-        break;
-      case 8:
+                  break;
+              case 8:
 
-        break;
-      case 9:
+                  break;
+              case 9:
 
-        break;
-      case 10:
+                  break;
+              case 10:
 
-        break;
-      case 11:
+                  break;
+              case 11:
 
-        break;
-      case 12:
+                  break;
+              case 12:
 
-        break;
-      case 13:
+                  break;
+              case 13:
 
-        break;
-      case 14:
+                  break;
+              case 14:
 
-        break;
-      case 98:
+                  break;
+              case 98:
 
-        break;
-      case 99:
+                  break;
+              case 99:
 
-        break;
-    }
+                  break;
+          }
+      } while (seleccion != 14);
   }
 
   /**
@@ -163,6 +166,7 @@ public class Simulador {
     for (Piscifactoria piscifactoria : piscifactorias) {
       System.out.println(indice + ".- " + piscifactoria.getNombre() + "[" + piscifactoria.getVivosTotales() + "/"
           + piscifactoria.getPecesTotales() + "/" + piscifactoria.getEspacioTotal() + "]");
+      System.out.println("Comida de la piscifactoria: " + piscifactoria.getComidaActual());
       indice++;
 
     }
@@ -199,6 +203,7 @@ public class Simulador {
 
     for (Piscifactoria piscifactoria : piscifactorias) {
       if (indice == valor) {
+        System.out.println();
         piscifactoria.showTankStatus();
       }
       indice++;
@@ -213,13 +218,9 @@ public class Simulador {
    * estadísticas y monedas.
    */
   public void showGeneralStatus() {
-    for (Piscifactoria piscifactoria : piscifactorias) {
-      piscifactoria.showStatus();
-      piscifactoria.getComidaActual();
-    }
+      getDatosPisc();
     System.out.println("Dias: " + this.dias);
-    Monedero monedero = Monedero.getInstance();
-    System.out.println("Monedas: " + monedero.getMonedas());
+    System.out.println("Monedas: " + Monedero.getInstance().getMonedas());
 
     AlmacenCentral almacenCentral = AlmacenCentral.getInstance();
     if (almacenCentral == null) {
@@ -324,8 +325,38 @@ public class Simulador {
 
   }
 
-  public void addFood() {
+  public void addFood(Piscifactoria piscifactoria) {
+    System.out.println("-----------------Comprar Comida-----------------");
+    System.out.println("1.5 de comida");
+    System.out.println("2.10 de comida");
+    System.out.println("3.25 de comida");
+    System.out.println("4. Llenar");
+    int seleccion = newScan.nextInt();
+    if (seleccion==1){
+        if(piscifactoria.getComidaMaxima()- piscifactoria.getComidaActual()>=5){
+          piscifactoria.setComidaActual(piscifactoria.getComidaActual()+5);
+          Monedero.getInstance().comprar(5);
+        }
+    } else if(seleccion == 2){
+      if(piscifactoria.getComidaMaxima()- piscifactoria.getComidaActual()>=10){
+        piscifactoria.setComidaActual(piscifactoria.getComidaActual()+10);
+        Monedero.getInstance().comprar(10);
+      }
+    } else if (seleccion==3) {
+      if(piscifactoria.getComidaMaxima()- piscifactoria.getComidaActual()>=25){
+        piscifactoria.setComidaActual(piscifactoria.getComidaActual()+25);
+        Monedero.getInstance().comprar(20);
+      }
+    } else if (seleccion==4) {
+      int valorAAumentar = piscifactoria.getComidaMaxima() - piscifactoria.getComidaActual();
+      if (valorAAumentar < 25){
+        piscifactoria.setComidaActual(piscifactoria.getComidaActual()+valorAAumentar);
+        Monedero.getInstance().comprar(valorAAumentar);
+      } else {
 
+
+      }
+    }
   }
 
   public void addFish() {

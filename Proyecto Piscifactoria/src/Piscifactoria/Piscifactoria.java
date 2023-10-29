@@ -47,11 +47,12 @@ public class Piscifactoria {
      * Muestra un menú de la información de cada tanque.
      */
     public void showTankStatus() {
+        int indice =1;
         for ( Tanque<? extends Pez> tnq: tanques) {
-
-            String nombreTanque = tnq.getNombre();
+            System.out.println(indice);
             tnq.showStatus();
             System.out.println("Tipo: " + tnq.getTipoPezTank());
+            indice++;
         }
 
     }
