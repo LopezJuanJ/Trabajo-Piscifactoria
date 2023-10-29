@@ -1,5 +1,6 @@
 package Piscifactoria;
 
+import Peces.Besugo;
 import Peces.Pez;
 import Tanque.Tanque;
 

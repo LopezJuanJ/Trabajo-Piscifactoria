@@ -129,6 +129,7 @@ public class Piscifactoria {
                     PecesDatos datos = pez.getDatos();
                     int precio = datos.getMonedas();
                     Monedero.getInstance().vender(precio);
+
                 }
                 }
             tanque.limpiarPeces();

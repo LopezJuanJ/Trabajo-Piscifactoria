@@ -27,7 +27,6 @@ public class Tanque<T extends Pez> {
        
 
     }
-
     public double porcentaje(int numero1, int numero2){
         if (numero2 == 0) {
             return 0.0;

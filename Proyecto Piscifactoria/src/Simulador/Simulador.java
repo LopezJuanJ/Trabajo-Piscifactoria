@@ -39,7 +39,6 @@ public class Simulador {
   public ArrayList<Tanque<? extends Pez>> tanques;
   public ArrayList<Pez> peces = new ArrayList<Pez>();
   public Scanner newScan = new Scanner(System.in);
-  public PecesDatos[] nombrePeces;
 
   public Simulador(int dias) {
     this.dias = dias;
@@ -125,10 +124,10 @@ public class Simulador {
                   this.sell();
                   break;
               case 10:
-
+                  this.cleanTank();
                   break;
               case 11:
-
+                  this.emptyTank();
                   break;
               case 12:
                   this.upgrade();
@@ -405,6 +404,7 @@ public class Simulador {
             Monedero.getInstance().comprar(totalDinero);
           }
         }
+
     }
   }
 
@@ -416,7 +416,7 @@ public class Simulador {
   }
   public void addFish() {
 
-    
+
   }
 
   /**
