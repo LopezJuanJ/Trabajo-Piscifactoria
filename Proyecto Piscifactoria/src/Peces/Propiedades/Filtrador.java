@@ -15,11 +15,18 @@ public class Filtrador extends Pez {
         super(sexo, datos);
         //TODO Auto-generated constructor stub
     }
-
+    public Filtrador(PecesDatos datos) {
+        super(false, datos);
+        //TODO Auto-generated constructor stub
+    }
 
     private boolean alimentado;
 
-
+    /**
+     * Implementacion para que un pez Filtrador coma.
+     * @param tanque El tanque en el que se encuentra el pez.
+     * @param piscifactoria La piscifactoria a la que pertenece el tanque.
+     */
     @Override
     public void comer(Tanque tanque, Piscifactoria piscifactoria) {
        Random random = new Random();

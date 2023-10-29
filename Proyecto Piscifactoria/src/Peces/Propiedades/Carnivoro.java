@@ -12,10 +12,18 @@ public class Carnivoro extends Pez{
         super(sexo, datos);
         //TODO Auto-generated constructor stub
     }
+    public Carnivoro(PecesDatos datos) {
+        super(false, datos);
+        //TODO Auto-generated constructor stub
+    }
 
     protected boolean alimentado;
 
-
+ /**
+     * Implementacion para que un pez Carnivoro coma.
+     * @param tanque El tanque en el que se encuentra el pez.
+     * @param piscifactoria La piscifactoria a la que pertenece el tanque.
+     */
     @Override
     public void comer(Tanque tanque, Piscifactoria piscifactoria) {
        Random random = new Random();
