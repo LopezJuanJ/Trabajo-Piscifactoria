@@ -2,6 +2,7 @@ package Simulador;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Almacen.AlmacenCentral;
 import Monedero.Monedero;
 import Peces.Pez;
 import Piscifactoria.PiscRio;
@@ -139,6 +140,13 @@ public class Simulador {
       System.out.println(this.dias);
       Monedero monedero = Monedero.getInstance();
       System.out.println("Monedas: " + monedero.getMonedas());
+
+      AlmacenCentral almacenCentral = AlmacenCentral.getInstance();
+      if(almacenCentral == null){
+        System.out.println("No dispone de Almacen Central");
+      }else{
+        System.out.println("Almacen con " + almacenCentral.getComida() + "/" + almacenCentral.getComidaMax() + " de comida, esta al " + (almacenCentral.getComida()/almacenCentral.getComidaMax())*100 + "%");
+      }
   }
     /**
      * Muestra el estado específico de una piscifactoría seleccionada.

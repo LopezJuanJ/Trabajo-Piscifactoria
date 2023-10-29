@@ -1,13 +1,16 @@
 package Almacen;
 
+import Monedero.Monedero;
 
 public class AlmacenCentral {
     protected int comida;
+    protected int comidaMax;
     private static AlmacenCentral instance;
 
 
     public AlmacenCentral() {
         this.comida = 200;
+        this.comidaMax= 200;
     }
 /**
      * Obtiene la instancia del Almacen central.
@@ -20,6 +23,13 @@ public class AlmacenCentral {
         return instance;   
 
     }
+    
+    public void upgradeAlmacen(){
+        Monedero monedas = Monedero.getInstance();
+        monedas.comprar(100);
+        this.comidaMax += 50; 
+    }
+
     /**
      * Resta la comida indicada en la cantidad.
      * @param cantidad cantidad a restar en la comida.
@@ -49,6 +59,13 @@ public class AlmacenCentral {
      */
     public void setComida(int comida) {
         this.comida = comida;
+    }
+    
+     public int getComidaMax() {
+        return comidaMax;
+    }
+    public void setComidaMax(int comidaMax) {
+        this.comidaMax = comidaMax;
     }
 
 }
