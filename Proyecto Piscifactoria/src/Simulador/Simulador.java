@@ -349,15 +349,15 @@ public class Simulador {
       }
     } else if (seleccion==4) {
       int valorAAumentar = piscifactoria.getComidaMaxima() - piscifactoria.getComidaActual();
-      if (valorAAumentar < 25){
-        piscifactoria.setComidaActual(piscifactoria.getComidaActual()+valorAAumentar);
-        Monedero.getInstance().comprar(valorAAumentar);
-      } else {
-
-
+      int  cantVecesCompletas = valorAAumentar/25;
+      int cantidadIncompleta = valorAAumentar % 25;
+      int totalDinero = 20*cantVecesCompletas + cantidadIncompleta;
+      int totalComida= 25*cantVecesCompletas + cantidadIncompleta;
+      piscifactoria.setComidaActual(piscifactoria.getComidaActual()+totalComida);
+      Monedero.getInstance().comprar(totalDinero);
       }
     }
-  }
+
 
   public void addFish() {
 
