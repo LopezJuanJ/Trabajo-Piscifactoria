@@ -122,7 +122,7 @@ public class Simulador {
 
                   break;
               case 9:
-
+                  this.sell();
                   break;
               case 10:
 
@@ -239,7 +239,7 @@ public class Simulador {
     int indice = 0;
     int valor = selectPisc() - 1;
     if(valor<1 || valor>this.piscifactorias.size()){
-      this.piscifactorias.get(valor).showTankStatus();
+      this.piscifactorias.get(valor).showStatus();
     }
 
   }
@@ -416,6 +416,7 @@ public class Simulador {
   }
   public void addFish() {
 
+    
   }
 
   /**

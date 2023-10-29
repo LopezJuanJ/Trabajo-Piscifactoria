@@ -31,15 +31,24 @@ public class Piscifactoria {
         this.comidaMaxima = obtenerComidaMaximaTanq();
         this.capacidadMaxima = obtenerCapacidadMaximaTanq();
     }
+    public double porcentaje(int numero1, int numero2){
+        if (numero2 == 0) {
+            return 0.0;
+        }
+        double porcentaje = (double) numero1 / numero2 * 100;
+        porcentaje = Math.round(porcentaje * 10) / 10.0;
+        return porcentaje;
+    }
+
      /**
      * Muestra todos los datos del pez.
      */
     public void showStatus() {
         System.out.println("===============" + this.nombre + "===============");
         System.out.println("Tanques: " + getCantTanques());
-        System.out.println("Ocupación: peces / max (x%)");
-        System.out.println("Peces vivos: vivos / total (x%)");
-        System.out.println("Peces alimentados: alimentados / vivos (x%)");
+        System.out.println("Ocupación: " + this.getPecesTotales() +"/"+this.getEspacioTotal()+ " (" +porcentaje(this.getPecesTotales(),this.getEspacioTotal()) + "%)");
+        System.out.println("Peces vivos: " + this.getVivosTotales()+"/"+getPecesTotales() + " (" + porcentaje(this.getVivosTotales(),getPecesTotales()) +"%)");
+        System.out.println("Peces alimentados:" + this.getPecesAlimentadossTotales()+"/"+this.getVivosTotales() + " (" + porcentaje(this.getPecesAlimentadossTotales(),this.getVivosTotales())+"%)");
         System.out.println("Hembras / Machos: H/M");
         System.out.println("Fértiles: fértiles / vivos");
         System.out.println("Almacén de comida: actual / max (x%)");
@@ -119,10 +128,10 @@ public class Piscifactoria {
                 if(pez.isVida() == true && pez.verificarMadurez()){
                     PecesDatos datos = pez.getDatos();
                     int precio = datos.getMonedas();
-                    Monedero monedero = Monedero.getInstance();
-                    monedero.vender(precio);
+                    Monedero.getInstance().vender(precio);
                 }
                 }
+            tanque.limpiarPeces();
          }
     }
      /**
@@ -157,6 +166,17 @@ public class Piscifactoria {
         }
 
     }
+
+    public  void deleteEmptyTank(int indice){
+
+        if (tanques.get(indice).peces.isEmpty()) {
+            tanques.remove(indice);
+        } else {
+            System.out.println("El tanque tiene peces, no puede ser eliminado.");
+        }
+    }
+
+
      /**
      * Obtiene el nombre de la piscifactoria.
      * @return Nombre de la piscifactoria.
@@ -256,6 +276,16 @@ public class Piscifactoria {
         }
         return total;
     }
+
+    public  int getPecesAlimentadossTotales(){
+        int total=0;
+        for (Tanque<? extends Pez> tanque : tanques){
+            total+=tanque.getPecesAlimentados();
+        }
+        return total;
+    }
+
+
     /**
      * Obtiene el número total de peces vivos en la piscifactoria.
      * @return numero peces vivos.
