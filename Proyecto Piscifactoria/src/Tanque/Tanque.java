@@ -33,7 +33,7 @@ public class Tanque<T extends Pez> {
      */
 
     public void showStatus() {
-        System.out.println("=============== Tanque # ===============");
+        System.out.println("=============== Tanque" + this.nombre + "===============");
         System.out.println("Ocupacion: " + getPeces() + "/" + capacidadMax + "("+ (getPeces().size() / capacidadMax) * 100 + "%)");
         System.out.println("Peces vivos" + getPecesVivos() + "/" + getPeces().size() + "("+ (getPecesVivos() / getPeces().size()) * 100 + "%)");
         System.out.println("Peces alimentados: " + getPecesAlimentados() + "/" + getPecesVivos() + "("+ (getPecesAlimentados() / getPecesVivos()) * 100 + "%)");
@@ -72,7 +72,7 @@ public class Tanque<T extends Pez> {
     }
  
 
-    public void reproduccion() {
+    public void reproduccion(boolean fertilidad) {
         boolean machoFertil = false;
         boolean hembraFertil = false;
 
@@ -81,6 +81,13 @@ public class Tanque<T extends Pez> {
                 machoFertil = true;
             } else if (!pez.isSexo() && pez.fertilidad) {
                 hembraFertil = true;
+                int cantHuevos= pez.getDatos().getHuevos();
+                if(cantHuevos%2==0){
+                    int machos = cantHuevos/2;
+                    for (int i=0; i <= machos; i++){
+                       // Pez pezChico = new Pez(true, pez.getDatos());
+                    }   
+                }
             }
 
             if (machoFertil && hembraFertil) {

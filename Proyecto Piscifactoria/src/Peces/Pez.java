@@ -105,6 +105,7 @@ public abstract class Pez {
 
     public void grow(Tanque<? extends Pez> tanque, Piscifactoria piscifactoria ) {
         Random random = new Random();
+        boolean ferti ;
         if(this.vida = true){
             AlmacenCentral almacenCentral = AlmacenCentral.getInstance();
             comer(tanque, piscifactoria);            
@@ -118,8 +119,9 @@ public abstract class Pez {
                 this.ciclo--;
            } 
            if( this.ciclo == 0){
-            this.fertilidad=true;
+            ferti = this.fertilidad=true;
            } else{
+            ferti = this.fertilidad=false;
             this.fertilidad=false;
         }
         }
