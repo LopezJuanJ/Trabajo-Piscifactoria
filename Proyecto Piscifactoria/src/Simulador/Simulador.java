@@ -97,7 +97,7 @@ public class Simulador {
                   this.showTankStatus();
                   break;
               case 4:
-                  stats.mostrar();
+                showStats();
                   break;
               case 5:
                   this.showIctio();
@@ -219,6 +219,12 @@ public class Simulador {
 
       return null;
   }
+
+  /**
+   * Metodo para añadir peces en la opcion oculta
+   * @param pisc Piscifactoria en que se añaden los peces
+   * @return
+   */
   public Pez menuSelPez98(Piscifactoria pisc){
     Random ran = new Random();
     int sel;
@@ -380,10 +386,17 @@ public class Simulador {
     }
   }
 
+  /**
+   * Mostrar estadisticas
+   */
   public void showStats() {
+    this.stats.mostrar();
 
   }
 
+  /**
+   * Llamar a los datos de un pez en concreto
+   */
   public void showIctio() {
     int sel;
     System.out.println("1.Tilapia del Nilo");
@@ -445,6 +458,9 @@ public class Simulador {
     }
   }
 
+  /**
+   * Pasar un dia
+   */
   public void nextDay() {
     for (Piscifactoria pisc: piscifactorias){
       pisc.nextDay();
@@ -452,6 +468,10 @@ public class Simulador {
     }
   }
 
+  /**
+   * metodo comprar comida
+   * @param piscifactoria piscifatoria en la que añadir comida
+   */
   public void addFood(Piscifactoria piscifactoria) {
     System.out.println("-----------------Comprar Comida-----------------");
     System.out.println("1.5 de comida");
@@ -623,7 +643,9 @@ public class Simulador {
   }
 
 
-
+  /**
+   * Metodo mejorar la infraestructura de nuestro proyecto
+   */
   public void upgrade() {
     String val2;
     String val3;
