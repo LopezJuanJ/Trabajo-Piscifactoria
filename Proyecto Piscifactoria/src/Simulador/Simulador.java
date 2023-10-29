@@ -153,6 +153,12 @@ public class Simulador {
     System.out.println("0-Cancelar");
 
   }
+
+  /**
+   * Metodo para seleccionar pez a añadir
+   * @param pisc piscifactoria en la que se añadira el pez seleccionado
+   * @return devuelve null si no se usa escoge ningún Pez
+   */
   public Pez menuSelPez(Piscifactoria pisc){
     int sel;
     if (pisc instanceof IMar){
@@ -560,7 +566,7 @@ public class Simulador {
     if(valor<1 || valor>piscifactorias.size()){
       Piscifactoria pisc = piscifactorias.get(valor);
       for (int i = 0; i < 4; i++) {
-        pisc.anadirPez(menuSelPez(pisc));
+        pisc.anadirPez(menuSelPez98(pisc));
       }
     }
   }
