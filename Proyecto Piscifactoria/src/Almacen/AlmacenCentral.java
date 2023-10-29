@@ -5,6 +5,7 @@ import Monedero.Monedero;
 public class AlmacenCentral {
     protected int comida;
     protected int comidaMax;
+
     private static AlmacenCentral instance;
 
 
@@ -17,16 +18,15 @@ public class AlmacenCentral {
      * @return la intancia del Almacen central , devolvera null si no esta creado
      */
     public static AlmacenCentral getInstance() {
-        // if (instance == null) {
-        //     instance = new AlmacenCentral();
-        // }
+         if (instance == null ) {
+             instance = new AlmacenCentral();
+         }
         return instance;   
 
     }
     
     public void upgradeAlmacen(){
-        Monedero monedas = Monedero.getInstance();
-        monedas.comprar(100);
+        Monedero.getInstance().comprar(100);
         this.comidaMax += 50; 
     }
 

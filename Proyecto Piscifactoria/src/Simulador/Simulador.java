@@ -20,6 +20,8 @@ import Peces.SalmonAt;
 import Peces.SalmonCh;
 import Peces.TilapiaNi;
 import Piscifactoria.PiscRio;
+import Piscifactoria.PiscMar;
+
 import Piscifactoria.Piscifactoria;
 import Tanque.Tanque;
 import propiedades.PecesDatos;
@@ -31,6 +33,7 @@ public class Simulador {
   public int dias;
   public int numeroPiscifactorias;
   public String nombreEmpresa;
+  public  boolean creado=false;
   public String nombrePiscifactoria;
   private ArrayList<Piscifactoria> piscifactorias = new ArrayList<Piscifactoria>();
   public ArrayList<Tanque<? extends Pez>> tanques;
@@ -128,18 +131,17 @@ public class Simulador {
 
                   break;
               case 12:
-
+                  this.upgrade();
                   break;
               case 13:
 
                   break;
-              case 14:
 
-                  break;
               case 98:
 
                   break;
               case 99:
+                System.out.println("1000 monedas mas");
                     Monedero.getInstance().setMonedas(Monedero.getInstance().getMonedas()+1000);
                   break;
           }
@@ -222,12 +224,11 @@ public class Simulador {
     System.out.println("Dias: " + this.dias);
     System.out.println("Monedas: " + Monedero.getInstance().getMonedas());
 
-    AlmacenCentral almacenCentral = AlmacenCentral.getInstance();
-    if (almacenCentral == null) {
+    if (!this.creado) {
       System.out.println("No dispone de Almacen Central");
     } else {
-      System.out.println("Almacen con " + almacenCentral.getComida() + "/" + almacenCentral.getComidaMax()
-          + " de comida, esta al " + (almacenCentral.getComida() / almacenCentral.getComidaMax()) * 100 + "%");
+      System.out.println("Almacen con " + AlmacenCentral.getInstance().getComida() + "/" + AlmacenCentral.getInstance().getComidaMax()
+          + " de comida, esta al " + (AlmacenCentral.getInstance().getComida() / AlmacenCentral.getInstance().getComidaMax())* 100 + "%");
     }
   }
 
@@ -237,8 +238,8 @@ public class Simulador {
   public void showSpecificStatus() {
     int indice = 0;
     int valor = selectPisc() - 1;
-    if(valor<1 || valor>piscifactorias.size()){
-      piscifactorias.get(valor).showTankStatus();
+    if(valor<1 || valor>this.piscifactorias.size()){
+      this.piscifactorias.get(valor).showTankStatus();
     }
 
   }
@@ -469,8 +470,141 @@ public class Simulador {
     }
   }
 
-  public void upgrade() {
 
+
+  public void upgrade() {
+    String val2;
+    String val3;
+
+
+    System.out.println("1. Comprar edificios");
+    System.out.println("2. Mejorar edificios");
+    System.out.println("3. Cancelar");
+    System.out.print("Seleccione una opcion: ");
+    int sel1 = newScan.nextInt();
+    newScan.nextLine(); // Consume the newline character after reading the integer
+
+    switch (sel1) {
+      case 1:
+        System.out.println("a. Piscifactoría ");
+        System.out.println("b. Almacén central");
+         val2 = newScan.nextLine().trim();
+
+        switch (val2) {
+          case "a":
+            System.out.print("Selecciona un nombre: ");
+            String nombre = newScan.nextLine();
+            System.out.println("1. Rio");
+            System.out.println("2. Mar");
+            System.out.print("Seleccione una opción para Piscifactoría (1/2): ");
+            int habitatOption = newScan.nextInt();
+
+            switch (habitatOption) {
+              case 1:
+                if (Monedero.getInstance().getMonedas() >= 500*piscifactorias.size()){
+                  PiscRio psr = new PiscRio(nombre);
+                  this.piscifactorias.add(psr);
+                  Monedero.getInstance().comprar(500*piscifactorias.size());
+                }else {
+                  System.out.println("Dinero Insuficiente");
+                }
+
+                break;
+              case 2:
+                if (Monedero.getInstance().getMonedas() >= 2000*this.piscifactorias.size()) {
+                  PiscMar psm = new PiscMar(nombre);
+                  this.piscifactorias.add(psm);
+                  Monedero.getInstance().comprar(2000*this.piscifactorias.size());
+                }else {
+                  System.out.println("Dinero insuficiente");
+                }
+                break;
+              default:
+                break;
+            }
+
+            break;
+
+          case "b":
+            if(!this.creado){
+              if (Monedero.getInstance().getMonedas() >= 2000) {
+              AlmacenCentral.getInstance();
+              Monedero.getInstance().comprar(2000);
+              this.creado=true;
+              }
+            }
+            break;
+
+          default:
+            System.out.println("Opción no válida");
+            break;
+        }
+
+        break;
+
+      case 2:
+        System.out.println("a. Piscifactoria");
+        System.out.println("b. Almacén Central");
+        System.out.print("Seleccione una opción: ");
+        val3 = newScan.nextLine().trim();
+
+        switch (val3) {
+          case "a":
+            System.out.println("i. Comprar tanque.");
+            System.out.println("ii. Aumentar almacén de comida.");
+            System.out.print("Seleccione una opción: ");
+            String val4 = newScan.nextLine().trim();
+
+            switch (val4) {
+              case "i":
+
+                int valor = selectPisc() - 1;
+
+                if(valor<1 || valor>this.piscifactorias.size()){
+                  this.piscifactorias.get(valor).addTank(this.piscifactorias.get(valor).obtenerCapacidadMaximaTanq());
+                }
+                break;
+
+              case "ii":
+                int valor2 = selectPisc() - 1;
+                if(valor2<1 || valor2>this.piscifactorias.size()){
+                  this.piscifactorias.get(valor2).upgradeFood();
+                }
+                break;
+
+              default:
+                System.out.println("Opción no válida");
+                break;
+            }
+            break;
+
+          case "b":
+            System.out.println("i. Aumentar Capacidad");
+            System.out.print("Seleccione una opción: ");
+            String val5 = newScan.nextLine().trim();
+            switch (val5) {
+              case "i":
+                if(!this.creado){
+                  System.out.println("Sin Almacen");
+                }else{
+                  AlmacenCentral.getInstance().upgradeAlmacen();
+                }
+                break;
+              default:
+                break;
+            }
+            break;
+
+          default:
+            System.out.println("Opción no válida");
+            break;
+        }
+        break;
+
+      default:
+        System.out.println("Opción no válida");
+        break;
+    }
   }
 
   /**

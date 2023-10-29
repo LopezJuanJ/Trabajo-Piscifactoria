@@ -1,6 +1,7 @@
 package Piscifactoria;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Monedero.Monedero;
 import Peces.IRio;
@@ -11,6 +12,7 @@ import propiedades.PecesDatos;
 
 public class Piscifactoria {
     protected int comidaActual;
+    public Scanner newScan = new Scanner(System.in);
     protected int comidaMaxima;
    
     protected int capacidadMaxima;
@@ -57,6 +59,17 @@ public class Piscifactoria {
 
     }
 
+    public void addTank(int tipo){
+        System.out.print("Dime Nombre del tanque");
+        String nom = newScan.nextLine();
+        Tanque tanque = new Tanque<Pez>(nom, tipo);
+        this.tanques.add(tanque);
+        if (tipo==25){
+            Monedero.getInstance().comprar(150);
+        }else{
+            Monedero.getInstance().comprar(600);
+        }
+    }
     /**
      * Muestra los peces de un determindo tanque.
      * @param indice El índice del tanque que se desea mostrar.
