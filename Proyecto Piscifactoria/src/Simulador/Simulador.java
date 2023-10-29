@@ -113,7 +113,7 @@ public class Simulador {
 
                   break;
               case 7:
-
+                  this.AddComidaFin();
                   break;
               case 8:
 
@@ -140,7 +140,7 @@ public class Simulador {
 
                   break;
               case 99:
-
+                    Monedero.getInstance().setMonedas(Monedero.getInstance().getMonedas()+1000);
                   break;
           }
       } while (seleccion != 14);
@@ -166,7 +166,7 @@ public class Simulador {
     for (Piscifactoria piscifactoria : piscifactorias) {
       System.out.println(indice + ".- " + piscifactoria.getNombre() + "[" + piscifactoria.getVivosTotales() + "/"
           + piscifactoria.getPecesTotales() + "/" + piscifactoria.getEspacioTotal() + "]");
-      System.out.println("Comida de la piscifactoria: " + piscifactoria.getComidaActual());
+      System.out.println("Comida de la piscifactoria "+ piscifactoria.getNombre()+ ": " + piscifactoria.getComidaActual());
       indice++;
 
     }
@@ -331,34 +331,88 @@ public class Simulador {
     System.out.println("2.10 de comida");
     System.out.println("3.25 de comida");
     System.out.println("4. Llenar");
+    System.out.print("Seleccione una opcion: ");
     int seleccion = newScan.nextInt();
-    if (seleccion==1){
-        if(piscifactoria.getComidaMaxima()- piscifactoria.getComidaActual()>=5){
-          piscifactoria.setComidaActual(piscifactoria.getComidaActual()+5);
+    if (AlmacenCentral.getInstance() == null) {
+      if (seleccion == 1) {
+        if (piscifactoria.getComidaMaxima() - piscifactoria.getComidaActual() >= 5) {
+          piscifactoria.setComidaActual(piscifactoria.getComidaActual() + 5);
           Monedero.getInstance().comprar(5);
+        } else {
+          System.out.println("No tienes suficiente espacio");
         }
-    } else if(seleccion == 2){
-      if(piscifactoria.getComidaMaxima()- piscifactoria.getComidaActual()>=10){
-        piscifactoria.setComidaActual(piscifactoria.getComidaActual()+10);
-        Monedero.getInstance().comprar(10);
+      } else if (seleccion == 2) {
+        if (piscifactoria.getComidaMaxima() - piscifactoria.getComidaActual() >= 10) {
+          piscifactoria.setComidaActual(piscifactoria.getComidaActual() + 10);
+          Monedero.getInstance().comprar(10);
+        }else{
+          System.out.println("No tienes suficiente espacio");
+        }
+      } else if (seleccion == 3) {
+        if (piscifactoria.getComidaMaxima() - piscifactoria.getComidaActual() >= 25) {
+          piscifactoria.setComidaActual(piscifactoria.getComidaActual() + 25);
+          Monedero.getInstance().comprar(20);
+        }else{
+          System.out.println("No tienes suficiente espacio");
+        }
+      } else if (seleccion == 4) {
+        int valorAAumentar = piscifactoria.getComidaMaxima() - piscifactoria.getComidaActual();
+        if(valorAAumentar == 0){
+          System.out.println("Almacen lleno");
+        }else {
+          int cantVecesCompletas = valorAAumentar / 25;
+          int cantidadIncompleta = valorAAumentar % 25;
+          int totalDinero = 20 * cantVecesCompletas + cantidadIncompleta;
+          int totalComida = 25 * cantVecesCompletas + cantidadIncompleta;
+          piscifactoria.setComidaActual(piscifactoria.getComidaActual() + totalComida);
+          Monedero.getInstance().comprar(totalDinero);
+        }
       }
-    } else if (seleccion==3) {
-      if(piscifactoria.getComidaMaxima()- piscifactoria.getComidaActual()>=25){
-        piscifactoria.setComidaActual(piscifactoria.getComidaActual()+25);
-        Monedero.getInstance().comprar(20);
-      }
-    } else if (seleccion==4) {
-      int valorAAumentar = piscifactoria.getComidaMaxima() - piscifactoria.getComidaActual();
-      int  cantVecesCompletas = valorAAumentar/25;
-      int cantidadIncompleta = valorAAumentar % 25;
-      int totalDinero = 20*cantVecesCompletas + cantidadIncompleta;
-      int totalComida= 25*cantVecesCompletas + cantidadIncompleta;
-      piscifactoria.setComidaActual(piscifactoria.getComidaActual()+totalComida);
-      Monedero.getInstance().comprar(totalDinero);
-      }
+      //En caso de Almacen
+      } else{ 
+        if(seleccion==1) {
+          if (AlmacenCentral.getInstance().getComidaMax() - AlmacenCentral.getInstance().getComida() >= 5) {
+            AlmacenCentral.getInstance().setComida(AlmacenCentral.getInstance().getComida() + 5);
+            Monedero.getInstance().comprar(5);
+          }else{
+            System.out.println("No tienes suficiente espacio");
+          }
+        } else if (seleccion == 2) {
+          if (AlmacenCentral.getInstance().getComidaMax() - AlmacenCentral.getInstance().getComida() >= 10) {
+            AlmacenCentral.getInstance().setComida(AlmacenCentral.getInstance().getComida() + 10);
+            Monedero.getInstance().comprar(10);
+          }else{
+            System.out.println("No tienes suficiente espacio");
+          }
+        } else if (seleccion==3) {
+          if (AlmacenCentral.getInstance().getComidaMax() - AlmacenCentral.getInstance().getComida() >= 25) {
+            AlmacenCentral.getInstance().setComida(AlmacenCentral.getInstance().getComida() + 25);
+            Monedero.getInstance().comprar(20);
+          }else{
+            System.out.println("No tienes suficiente espacio");
+          }
+        } else if (seleccion ==4) {
+          int valorAAumentar = AlmacenCentral.getInstance().getComidaMax() - AlmacenCentral.getInstance().getComida();
+          if(valorAAumentar == 0){
+            System.out.println("Almacen lleno");
+          }else {
+            int cantVecesCompletas = valorAAumentar / 25;
+            int cantidadIncompleta = valorAAumentar % 25;
+            int totalDinero = 20 * cantVecesCompletas + cantidadIncompleta;
+            int totalComida = 25 * cantVecesCompletas + cantidadIncompleta;
+            AlmacenCentral.getInstance().setComida(AlmacenCentral.getInstance().getComida() + totalComida);
+            Monedero.getInstance().comprar(totalDinero);
+          }
+        }
     }
+  }
 
-
+  public void AddComidaFin(){
+    int valor = selectPisc() - 1;
+    if(valor<1 || valor>piscifactorias.size()){
+      addFood(piscifactorias.get(valor));
+    }
+  }
   public void addFish() {
 
   }
@@ -369,18 +423,10 @@ public class Simulador {
   public void sell() {
     int pezVendido = 0;
     for (Piscifactoria piscifactoria : piscifactorias) {
-      for (Tanque tanque : tanques) {
-        for (Pez pez : peces) {
-          if (pez.verificarMadurez()) {
-            piscifactoria.sellFish();
-            pezVendido++;
-            System.out.println("Piscifactoria" + piscifactoria.getNombre() + ":");
-          }
-        }
+        piscifactoria.sellFish();
 
       }
     }
-  }
 
   /**
    * Limpia los tanques de la piscifactoría seleccionada eliminando los peces

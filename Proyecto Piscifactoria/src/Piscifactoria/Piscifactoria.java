@@ -114,7 +114,7 @@ public class Piscifactoria {
     }
      /**
      * Realiza una mejora en la cantidad de comida disponible en la piscifactoria.
-     * @param comidaSumada La cantidad de comida a añadir al depósito.
+     *
      */
     public void upgradeFood() {
         Monedero monedas = Monedero.getInstance();
