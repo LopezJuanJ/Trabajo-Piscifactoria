@@ -52,12 +52,5 @@ public class Monedero {
     public void saberMonedas() {
         System.out.println("Actualmente tienes: " + this.monedas + " monedas.");
     }
-    /**
-     * Comprueba si es posible realizar con determinada cantidad.
-     * @param cantidad La cantidad a comprobar.
-     * @return true si es posible realizar la compra, false en caso contrario.
-     */
-    public boolean posibilidadCompra(int cantidad) {
-        return cantidad <= monedas;
-    }
+
 }

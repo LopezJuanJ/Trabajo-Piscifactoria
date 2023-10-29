@@ -404,7 +404,20 @@ public class Simulador {
             Monedero.getInstance().comprar(totalDinero);
           }
         }
+      for (Piscifactoria pisc : piscifactorias) {
+        // Verificar si hay comida en el almacén y si la piscifactoria tiene espacio
+        while (AlmacenCentral.getInstance().getComida() > 0 && pisc.getComidaMaxima() > pisc.getComidaActual()) {
+          AlmacenCentral almacen = AlmacenCentral.getInstance();
 
+          // Verificar si la piscifactoria puede aceptar al menos una unidad de comida
+          if (pisc.getComidaMaxima() - pisc.getComidaActual() > 0) {
+            almacen.setComida(almacen.getComida() - 1);
+            pisc.setComidaActual(pisc.getComidaActual() + 1);
+          } else {
+            break;
+          }
+        }
+      }
     }
   }
 
