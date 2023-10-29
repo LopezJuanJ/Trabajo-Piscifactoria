@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import Peces.IRio;
 import Peces.Pez;
 import Piscifactoria.Piscifactoria;
-import propiedades.PecesDatos;
 
 public class Tanque<T extends Pez> {
     public ArrayList<T> peces;
@@ -25,6 +24,7 @@ public class Tanque<T extends Pez> {
         this.peces = new ArrayList<>();
         this.nombre = nombre;
         this.capacidadMax = capacidadMax;
+       
 
     }
 
@@ -33,13 +33,19 @@ public class Tanque<T extends Pez> {
      */
 
     public void showStatus() {
-        System.out.println("=============== Tanque" + this.nombre + "===============");
-        System.out.println("Ocupacion: " + getPeces() + "/" + capacidadMax + "("+ (getPeces().size() / capacidadMax) * 100 + "%)");
-        System.out.println("Peces vivos" + getPecesVivos() + "/" + getPeces().size() + "("+ (getPecesVivos() / getPeces().size()) * 100 + "%)");
-        System.out.println("Peces alimentados: " + getPecesAlimentados() + "/" + getPecesVivos() + "("+ (getPecesAlimentados() / getPecesVivos()) * 100 + "%)");
-        System.out.println("Peces adultos: " + getPecesMaduros() + "/" + getPecesVivos() + "("+ (getPecesMaduros() / getPecesVivos() * 100) + "%)");
-        System.out.println("Hembras/Machos: " + getMachos() + "/" + getHembras());
-        System.out.println("Fertiles: " + getPecesFertiles() + "/" + getPecesVivos() + "("+ (getPecesFertiles() / getPecesVivos() * 100) + "%)");
+        System.out.println("=============== Tanque " + this.nombre + "===============");
+            if (this.getPeces().size()==0){
+                System.out.println("No hay peces en el tanque");
+            } else {
+                System.out.println("Ocupacion: " + this.getPeces().size() + "/" + capacidadMax + "("+ (this.getPeces().size() / capacidadMax) * 100 + "%)");
+                System.out.println("Peces vivos" + this.getPecesVivos() + "/" + this.getPeces().size() + "("+ (this.getPecesVivos() / this.getPeces().size()) * 100 + "%)");
+                System.out.println("Peces alimentados: " + this.getPecesAlimentados() + "/" + this.getPecesVivos() + "("+ (this.getPecesAlimentados() / this.getPecesVivos()) * 100 + "%)");
+                System.out.println("Peces adultos: " + this.getPecesMaduros() + "/" + this.getPecesVivos() + "("+ (this.getPecesMaduros() / this.getPecesVivos() * 100) + "%)");
+                System.out.println("Hembras/Machos: " + this.getMachos() + "/" + this.getHembras());
+                System.out.println("Fertiles: " + this.getPecesFertiles() + "/" + this.getPecesVivos() + "("+ (this.getPecesFertiles() / this.getPecesVivos() * 100) + "%)");
+            }
+            
+      
     }
 
     /**

@@ -1,11 +1,24 @@
 package Simulador;
 
+import java.lang.management.ThreadInfo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import Almacen.AlmacenCentral;
 import Monedero.Monedero;
+import Peces.Besugo;
+import Peces.Caballa;
+import Peces.Corvina;
+import Peces.LenguadoEu;
+import Peces.LubinaEu;
+import Peces.LubinaRa;
+import Peces.LucioNor;
+import Peces.Pejerrey;
 import Peces.Pez;
+import Peces.Robalo;
+import Peces.SalmonAt;
+import Peces.SalmonCh;
+import Peces.TilapiaNi;
 import Piscifactoria.PiscRio;
 import Piscifactoria.Piscifactoria;
 import Tanque.Tanque;
@@ -22,25 +35,12 @@ public class Simulador {
   private ArrayList<Piscifactoria> piscifactorias = new ArrayList<Piscifactoria>();
   public ArrayList<Tanque<? extends Pez>> tanques;
   public ArrayList<Pez> peces = new ArrayList<Pez>();
-
+  public Scanner newScan = new Scanner(System.in);
   public PecesDatos[] nombrePeces;
 
   public Simulador(int dias) {
     this.dias = dias;
-    // this.nombrePeces = new PecesDatos[]{
-    // propiedades.AlmacenPropiedades.TILAPIA_NILO,
-    // propiedades.AlmacenPropiedades.LUCIO_NORTE,
-    // propiedades.AlmacenPropiedades.CORVINA,
-    // propiedades.AlmacenPropiedades.SALMON_CHINOOK,
-    // propiedades.AlmacenPropiedades.PEJERREY,
-    // propiedades.AlmacenPropiedades.LENGUADO_EUROPEO,
-    // propiedades.AlmacenPropiedades.CABALLA,
-    // propiedades.AlmacenPropiedades.BESUGO,
-    // propiedades.AlmacenPropiedades.ROBALO,
-    // propiedades.AlmacenPropiedades.LUBINA_RAYADA,
-    // propiedades.AlmacenPropiedades.LUBINA_EUROPEA,
-    // propiedades.AlmacenPropiedades.SALMON_ATLANTICO
-    // };
+    
   }
 
   public static void main(String[] args) {
@@ -96,7 +96,7 @@ public class Simulador {
         this.showGeneralStatus();
         break;
       case 2:
-        this.selectPisc();
+        this.showSpecificStatus();
         break;
       case 3:
         this.showTankStatus();
@@ -105,7 +105,7 @@ public class Simulador {
 
         break;
       case 5:
-
+        this.showIctio();
         break;
       case 6:
 
@@ -162,7 +162,7 @@ public class Simulador {
     int indice = 1;
     for (Piscifactoria piscifactoria : piscifactorias) {
       System.out.println(indice + ".- " + piscifactoria.getNombre() + "[" + piscifactoria.getVivosTotales() + "/"
-          + piscifactoria.getPecesTotales() + "/" + piscifactoria.getEspacioTotal());
+          + piscifactoria.getPecesTotales() + "/" + piscifactoria.getEspacioTotal() + "]");
       indice++;
 
     }
@@ -261,30 +261,65 @@ public class Simulador {
 
   }
 
-  public int showIctio() {
-    Scanner scanner = new Scanner(System.in);
+  public void showIctio() {
     int sel;
-    int indice = 1;
-    for (PecesDatos pez : nombrePeces) {
-      System.out.println(indice);
-      System.out.println("Nombre: " + pez.getNombre());
-      System.out.println("Nombre Cientifico: " + pez.getCientifico());
-      System.out.println("Madurez: " + pez.getMadurez());
-      System.out.println("Tipo: " + pez.getTipo());
-      System.out.println("Coste Compra: " + pez.getCoste());
-      System.out.println("Huevos: " + pez.getHuevos());
-      System.out.println("Ciclo: " + pez.getCiclo());
-      System.out.println("Monedas Venta: " + pez.getMonedas());
-      System.out.println("Optimo: " + pez.getOptimo());
-      System.out.println("Tipo Piscifactoria: " + pez.getPiscifactoria());
-      for (PecesProps propi : pez.getPropiedades()) {
-        System.out.print("Propiedad: " + propi.getValue());
-      }
-      indice++;
+    System.out.println("1.Tilapia del Nilo");
+    System.out.println("2.Lucio del norte");
+    System.out.println("3.Corvina");
+    System.out.println("4.Salmon Chinook ");
+    System.out.println("5.Pejerrey");
+    System.out.println("6.Lenguado Europeo");
+    System.out.println("7.Caballa");
+    System.out.println("8.Robalo");
+    System.out.println("9.Lubimna Rayada");
+    System.out.println("10.Lubina Europea");
+    System.out.println("11. Salmon atlantico");
+    System.out.println("12.Besugo");
+    System.out.print("Selecciona un Pez: ");
+    sel = newScan.nextInt();
+    newScan.nextLine();
+    switch (sel) {
+      case 1:
+        TilapiaNi.showIctio();
+        break;
+      case 2:
+        LucioNor.showIctio();
+        break;
+      case 3:
+        Corvina.showIctio();
+        break;
+      case 4:
+        SalmonCh.showIctio();
+        break;
+      case 5:
+        Pejerrey.showIctio();
+        break;
+      case 6:
+        LenguadoEu.showIctio();
+        break;
+      case 7:
+        Caballa.showIctio();
+        break;
+      case 8:
+        Robalo.showIctio();
+        break;
+      case 9:
+        LubinaRa.showIctio();
+        break;
+      case 10:
+        LubinaEu.showIctio();
+        break;
+      case 11:
+        SalmonAt.showIctio();
+        break;
+      case 12:
+        Besugo.showIctio();
+        break;
+      
+
+      default:
+        break;
     }
-    System.out.print("Selecciona una opcion: ");
-    sel = scanner.nextInt();
-    return sel;
   }
 
   public void nextDay() {
