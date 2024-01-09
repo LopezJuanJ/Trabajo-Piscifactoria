@@ -587,7 +587,7 @@ public class Simulador {
     if(valor<1 || valor>piscifactorias.size()){
       Piscifactoria pisc = piscifactorias.get(valor);
       for (int i = 0; i < 4; i++) {
-        pisc.anadirPez(menuSelPez98(pisc));
+        pisc.anadirPez98(menuSelPez98(pisc));
       }
     }
   }

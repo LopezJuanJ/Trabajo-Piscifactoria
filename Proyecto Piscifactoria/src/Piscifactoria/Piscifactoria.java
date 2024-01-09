@@ -202,6 +202,17 @@ public class Piscifactoria {
         int precio = pez.getDatos().getCoste();
         Monedero.getInstance().comprar(precio);
     }
+    public void anadirPez98(Pez pez) {
+        Tanque tanqueOptimo = buscarTanq(pez);
+        if (tanqueOptimo == null) {
+            System.out.println("No tienes un tanque disponible!");
+            return;
+        }
+        tanqueOptimo.addFish(pez);
+
+        System.out.println("Se ha comprado: " + pez.getDatos().getNombre());
+        int precio = pez.getDatos().getCoste();
+    }
 
      /**
      * Obtiene el nombre de la piscifactoria.
