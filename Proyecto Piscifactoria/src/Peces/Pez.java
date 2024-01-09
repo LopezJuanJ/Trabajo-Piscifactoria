@@ -58,19 +58,19 @@ public abstract class Pez {
         System.out.println("---------------" + this.datos.getNombre() + "---------------");
         System.out.println("Edad " + edad + "dias");
         System.out.println("Sexo: " + sexo);
-        if(alimentado = true){
+        if(alimentado == true){
             System.out.println("Alimentado: Si");
         } else {
             System.out.println("Alimentado: No");
         }
 
-        if (fertilidad = true) {
+        if (fertilidad == true) {
             System.out.println("Fertilidad: Si");
         } else {
             System.out.println("Fertilidad: No");
         };
 
-        if(vida = true){
+        if(vida == true){
             System.out.println("Vivo: Si");
         } else {
             System.out.println("Vivo: No");
@@ -121,7 +121,7 @@ public abstract class Pez {
     public void grow(Tanque<? extends Pez> tanque, Piscifactoria piscifactoria ) {
         Random random = new Random();
         boolean ferti ;
-        if(this.vida = true){
+        if(this.vida == true){
             AlmacenCentral almacenCentral = AlmacenCentral.getInstance();
             comer(tanque, piscifactoria);            
             if(!this.alimentado && !random.nextBoolean()){

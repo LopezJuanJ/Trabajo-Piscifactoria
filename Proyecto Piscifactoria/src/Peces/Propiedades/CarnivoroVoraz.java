@@ -33,9 +33,9 @@ public class CarnivoroVoraz extends Pez{
          boolean eliminarPez = random.nextBoolean();
          if (this.alimentado = false){ //Primero comprobar si esta alimentado
              if(pecesMuertos> 0){
-             if (comerMuerto = true){//Puede comer un muerto 
+             if (comerMuerto == true){//Puede comer un muerto 
                  alimentado=true;
-                 if(eliminarPez=true){ //comprobamos si se elimina o no
+                 if(eliminarPez==true){ //comprobamos si se elimina o no
                      pecesMuertos--;
                  }                
              }else{

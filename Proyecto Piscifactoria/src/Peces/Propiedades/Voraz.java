@@ -28,7 +28,7 @@ public class Voraz extends Pez {
     @Override
     public void comer(Tanque tanque, Piscifactoria piscifactoria) {
         int comida = piscifactoria.getComidaActual();
-        if(alimentado=false){
+        if(alimentado==false){
             comida-=2;
             alimentado=true;
         }

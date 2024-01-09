@@ -32,8 +32,8 @@ public class Filtrador extends Pez {
        Random random = new Random();
        int comida = piscifactoria.getComidaActual();
        boolean comer = random.nextBoolean();
-       if(alimentado = false){
-        if(comer=true){
+       if(alimentado == false){
+        if(comer==true){
             comida--;
             alimentado=true;
         } else{

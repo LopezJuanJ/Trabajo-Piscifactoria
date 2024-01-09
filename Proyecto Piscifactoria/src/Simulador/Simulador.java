@@ -249,6 +249,7 @@ public class Simulador {
     }else {
       sel=ran.nextInt(6,7);
     }
+  
     switch (sel){
       case 1:
         return new TilapiaNi();

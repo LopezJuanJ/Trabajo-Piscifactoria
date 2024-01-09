@@ -28,7 +28,7 @@ public class Activo extends Pez {
     public void comer(Tanque tanque, Piscifactoria piscifactoria) {
         Random random = new Random();
         int comida = piscifactoria.getComidaActual();
-        if (alimentado = false) {
+        if (alimentado == false) {
             comida--;
             if (random.nextBoolean()) {
                 comida--;
